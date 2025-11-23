@@ -7,6 +7,9 @@ const peep102 = `${base}/peep-102.png`;
 const peep18 = `${base}/peep-18.png`;
 const peep73 = `${base}/peep-73.png`;
 const peep2 = `${base}/peep-2.png`;
+const questionMarkPink = `${base}/question-mark-pink.svg`;
+const questionMarkCute = `${base}/question-mark-cute.svg`;
+const questionMarkBlue = `${base}/question-mark-blue.svg`;
 ---
 
 <Layout title="쇼츠 - MediAccess">
@@ -154,13 +157,13 @@ const peep2 = `${base}/peep-2.png`;
 
 			<!-- Question Marks -->
 			<div class="scene1-question1 absolute bottom-16 left-1/2 opacity-0 w-14" style="transform: translate(calc(-50% - 25px), 0) rotate(-15deg) !important;">
-				<img src="/question-mark-pink.svg" alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
+				<img src={questionMarkPink} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
 			<div class="scene1-question2 absolute bottom-16 left-1/2 opacity-0 w-14" style="transform: translate(-50%, 0) !important;">
-				<img src="/question-mark-cute.svg" alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
+				<img src={questionMarkCute} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
 			<div class="scene1-question3 absolute bottom-16 left-1/2 opacity-0 w-14" style="transform: translate(calc(-50% + 25px), 0) rotate(15deg) !important;">
-				<img src="/question-mark-blue.svg" alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
+				<img src={questionMarkBlue} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
 		</div>
 
