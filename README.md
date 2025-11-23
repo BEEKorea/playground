@@ -71,7 +71,27 @@ site/
 - **Astro 5.16.0** - 정적 사이트 생성기
 - **Tailwind CSS v4** - 유틸리티 우선 CSS 프레임워크
 - **TypeScript** - 타입 안전성
-- **Vercel Analytics** - 웹 분석 (선택사항)
+
+## 배포
+
+이 프로젝트는 GitHub Pages를 통해 자동으로 배포됩니다.
+
+### 배포 설정
+
+1. **GitHub Pages 활성화**:
+   - GitHub 저장소 → Settings → Pages
+   - Source: "GitHub Actions" 선택
+
+2. **자동 배포**:
+   - `main` 브랜치에 푸시하면 자동으로 빌드 및 배포됩니다
+   - `.github/workflows/deploy.yml` 워크플로 사용
+
+3. **배포 URL**:
+   - https://beekorea.github.io/playground
+
+### 수동 배포
+
+Actions 탭에서 "Deploy to GitHub Pages" 워크플로를 수동으로 실행할 수 있습니다.
 
 ## 커스텀 폰트
 
