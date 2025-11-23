@@ -218,22 +218,32 @@ import Layout from '../layouts/Layout.astro';
 	</div>
 
 	<style>
-		/* Apply subtle crayon texture to all backgrounds */
+		/* Apply background color */
 		#loading-screen,
 		#main-content,
 		#cover-screen {
 			position: relative;
+			background: #FBF5E8;
 		}
 
-		#loading-screen::before,
-		#main-content::before,
-		#cover-screen::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-			background: #FBF5E8;
-			filter: url(#crayon-bg);
-			z-index: -1;
+		/* Apply subtle crayon texture on mobile only */
+		@media (max-width: 767px) {
+			#loading-screen::before,
+			#main-content::before,
+			#cover-screen::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: #FBF5E8;
+				filter: url(#crayon-bg);
+				z-index: -1;
+			}
+
+			#loading-screen,
+			#main-content,
+			#cover-screen {
+				background: transparent;
+			}
 		}
 
 		@keyframes fadeIn {
