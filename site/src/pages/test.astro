@@ -328,13 +328,11 @@ import Layout from '../layouts/Layout.astro';
 			bottom: -2px;
 			width: 100%;
 			height: 0;
-			border-bottom: 2px dotted rgba(107, 91, 79, 0.4);
+			border-bottom: 2px dotted rgba(107, 91, 79, 0.5);
 			opacity: 0;
-			transition: opacity 0.2s ease;
 		}
 
 		.book-link:hover::after {
-			opacity: 1;
 			animation: blinkUnderline 1.2s ease-in-out infinite;
 		}
 
@@ -771,7 +769,7 @@ import Layout from '../layouts/Layout.astro';
 						<!-- Text layer on top without filter -->
 						<div class="relative rounded-xl" style="padding: ${isMobile ? '1.25rem' : '1.75rem'};">
 							<div class="text-center mb-2">
-								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold book-link" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '1.125rem' : '1.4rem'}; cursor: pointer; text-shadow: -1px -1px 0 #6B5B4F, 1px -1px 0 #6B5B4F, -1px 1px 0 #6B5B4F, 1px 1px 0 #6B5B4F, -2px 0 0 #6B5B4F, 2px 0 0 #6B5B4F, 0 -2px 0 #6B5B4F, 0 2px 0 #6B5B4F;">${data.book}</a>
+								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold book-link" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '1.125rem' : '1.4rem'}; cursor: pointer;">${data.book}</a>
 							</div>
 							<div class="text-center" style="padding: ${isMobile ? '0.25rem' : '0.5rem'};">
 								<p style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #8B7355; font-size: ${isMobile ? '0.85rem' : '0.95rem'}; white-space: pre-line;">${data.time}</p>
