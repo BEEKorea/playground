@@ -735,9 +735,9 @@ import Layout from '../layouts/Layout.astro';
 				// Result node
 				const isMobile = window.innerWidth < 768;
 				node.innerHTML = `
-					<div class="relative" style="width: ${isMobile ? '160px' : '180px'}; height: ${isMobile ? '160px' : '180px'};">
+					<div class="relative" style="width: ${isMobile ? '180px' : '180px'}; height: ${isMobile ? '180px' : '180px'};">
 						<!-- Background box with crayon effect and doodles -->
-						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '0.75rem' : '1rem'}; overflow: hidden;">
+						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '1rem' : '1rem'}; overflow: hidden;">
 							<!-- Doodle pattern -->
 							<svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.15; pointer-events: none;">
 								<!-- Stars -->
@@ -814,10 +814,10 @@ import Layout from '../layouts/Layout.astro';
 						<div class="rounded-full flex items-center justify-center relative" style="width: ${nodeSize}; height: ${nodeSize}; padding: ${isMobile ? '0.75rem' : '1rem'};">
 							<h3 class="text-center whitespace-pre-line leading-tight" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #5D4E37; font-size: ${textSize};">${displayText}</h3>
 						</div>
-						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: ${isMobile ? '-3.5rem' : '-4rem'}; z-index: 100; align-items: center;">
+						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: ${isMobile ? '-3.5rem' : '-4rem'}; z-index: 100; align-items: flex-start;">
 							<button
 								class="yes-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
-								style="background: #42A5F5; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${isMobile ? '0.8rem' : '0.875rem'}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0;"
+								style="background: #42A5F5; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${isMobile ? '0.8rem' : '0.875rem'}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; margin-top: ${isMobile ? '2px' : '0'};"
 								data-node="${id}"
 								data-next="${data.yes}"
 							><span style="filter: url(#crayon-text); pointer-events: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">${yesLabel}</span></button>
