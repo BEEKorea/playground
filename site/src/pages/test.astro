@@ -1,0 +1,979 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="나에게 딱! 맞는 BEE 겨울 특강 과목은? - MediAccess">
+	<!-- Loading Screen -->
+	<div id="loading-screen" class="fixed inset-0 flex items-center justify-center transition-opacity duration-700" style="background: #FBF5E8; z-index: 9999;">
+		<div class="flex flex-col items-center justify-center">
+			<!-- Animated crayon drawing effect -->
+			<svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 1.5rem; display: block; margin-left: auto; margin-right: auto;">
+				<circle cx="60" cy="60" r="50" fill="none" stroke="#6FA8DC" stroke-width="4" stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round" style="animation: draw 2s ease-out forwards;">
+					<animate attributeName="stroke-dashoffset" from="314" to="0" dur="2s" fill="freeze" />
+				</circle>
+				<circle cx="60" cy="60" r="35" fill="none" stroke="#8AB4E5" stroke-width="3" stroke-dasharray="220" stroke-dashoffset="220" stroke-linecap="round" style="animation-delay: 0.5s;">
+					<animate attributeName="stroke-dashoffset" from="220" to="0" dur="1.5s" begin="0.5s" fill="freeze" />
+				</circle>
+			</svg>
+			<p class="text-base md:text-xl" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #6FA8DC; animation: fadeIn 1s ease-out; text-align: center; width: 100%;">잠시만 기다려주세요...</p>
+		</div>
+	</div>
+
+	<div class="min-h-screen p-4 overflow-auto" style="background: #FBF5E8; opacity: 0;" id="main-content">
+		<!-- Floating Decorations -->
+		<div class="fixed inset-0 pointer-events-none" style="z-index: 0;">
+			<!-- Big shapes row (top) -->
+			<!-- Yellow diamond -->
+			<div class="absolute" style="top: 8%; left: 15%;">
+				<svg width="70" height="70" viewBox="0 0 70 70">
+					<rect x="10" y="10" width="50" height="50" fill="#FFD93D" stroke="#2C1810" stroke-width="4" transform="rotate(45 35 35)"/>
+				</svg>
+			</div>
+
+			<!-- Striped circle -->
+			<div class="absolute" style="top: 10%; left: 35%;">
+				<svg width="70" height="70" viewBox="0 0 70 70">
+					<circle cx="35" cy="35" r="28" fill="white" stroke="#2C1810" stroke-width="4"/>
+					<defs>
+						<pattern id="stripes" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+							<line x1="0" y1="0" x2="0" y2="8" stroke="#6FA8DC" stroke-width="4"/>
+						</pattern>
+					</defs>
+					<circle cx="35" cy="35" r="28" fill="url(#stripes)"/>
+					<circle cx="35" cy="35" r="28" fill="none" stroke="#2C1810" stroke-width="4"/>
+				</svg>
+			</div>
+
+			<!-- Pink triangle -->
+			<div class="absolute" style="top: 5%; right: 12%;">
+				<svg width="80" height="80" viewBox="0 0 80 80">
+					<path d="M 40 10 L 70 65 L 10 65 Z" fill="#FF6B9D" stroke="#2C1810" stroke-width="4"/>
+				</svg>
+			</div>
+
+			<!-- Pink blob (left) -->
+			<div class="absolute" style="top: 35%; left: 5%;">
+				<svg width="60" height="70" viewBox="0 0 60 70">
+					<path d="M 10 20 Q 5 10, 15 8 Q 30 5, 40 15 Q 50 25, 45 40 Q 40 55, 25 58 Q 10 60, 8 45 Q 5 30, 10 20 Z" fill="#FF6B9D"/>
+				</svg>
+			</div>
+
+			<!-- Pink teardrop -->
+			<div class="absolute" style="top: 12%; left: 28%;">
+				<svg width="40" height="50" viewBox="0 0 40 50">
+					<path d="M 20 5 Q 30 15, 30 30 Q 30 42, 20 45 Q 10 42, 10 30 Q 10 15, 20 5 Z" fill="#FF6B9D"/>
+				</svg>
+			</div>
+
+			<!-- Blue blob (bottom) -->
+			<div class="absolute" style="bottom: 15%; left: 25%;">
+				<svg width="90" height="60" viewBox="0 0 90 60">
+					<path d="M 10 30 Q 5 15, 20 10 Q 40 5, 60 15 Q 80 20, 85 35 Q 88 50, 70 55 Q 50 58, 30 50 Q 10 45, 10 30 Z" fill="#6FA8DC"/>
+				</svg>
+			</div>
+
+			<!-- Blue circle (center) -->
+			<div class="absolute" style="top: 45%; left: 48%;">
+				<svg width="45" height="45" viewBox="0 0 45 45">
+					<circle cx="22.5" cy="22.5" r="18" fill="#6FA8DC" stroke="#2C1810" stroke-width="4"/>
+				</svg>
+			</div>
+
+			<!-- Small shapes -->
+			<!-- Yellow triangle -->
+			<div class="absolute" style="top: 52%; right: 28%;">
+				<svg width="35" height="35" viewBox="0 0 35 35">
+					<path d="M 17.5 5 L 30 28 L 5 28 Z" fill="#FFD93D" stroke="#2C1810" stroke-width="3"/>
+				</svg>
+			</div>
+
+			<!-- Cyan diamond -->
+			<div class="absolute" style="bottom: 22%; right: 15%;">
+				<svg width="45" height="45" viewBox="0 0 45 45">
+					<rect x="10" y="10" width="25" height="25" fill="#6FDBDB" stroke="#2C1810" stroke-width="3" transform="rotate(45 22.5 22.5)"/>
+				</svg>
+			</div>
+
+			<!-- X marks -->
+			<div class="absolute" style="top: 18%; left: 8%;">
+				<svg width="25" height="25" viewBox="0 0 25 25">
+					<path d="M 5 5 L 20 20 M 20 5 L 5 20" stroke="#2C1810" stroke-width="3" stroke-linecap="round"/>
+				</svg>
+			</div>
+			<div class="absolute" style="top: 25%; left: 12%;">
+				<svg width="20" height="20" viewBox="0 0 20 20">
+					<path d="M 4 4 L 16 16 M 16 4 L 4 16" stroke="#2C1810" stroke-width="2.5" stroke-linecap="round"/>
+				</svg>
+			</div>
+			<div class="absolute" style="top: 32%; left: 6%;">
+				<svg width="22" height="22" viewBox="0 0 22 22">
+					<path d="M 4 4 L 18 18 M 18 4 L 4 18" stroke="#2C1810" stroke-width="2.5" stroke-linecap="round"/>
+				</svg>
+			</div>
+			<div class="absolute" style="top: 38%; left: 10%;">
+				<svg width="18" height="18" viewBox="0 0 18 18">
+					<path d="M 3 3 L 15 15 M 15 3 L 3 15" stroke="#2C1810" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</div>
+
+			<!-- Dashes/lines -->
+			<div class="absolute" style="top: 20%; left: 18%;">
+				<svg width="30" height="8" viewBox="0 0 30 8">
+					<line x1="2" y1="4" x2="28" y2="4" stroke="#2C1810" stroke-width="3" stroke-linecap="round"/>
+				</svg>
+			</div>
+
+			<!-- Curved lines -->
+			<div class="absolute" style="bottom: 35%; right: 25%;">
+				<svg width="80" height="40" viewBox="0 0 80 40">
+					<path d="M 5 35 Q 20 5, 40 20 Q 60 35, 75 15" stroke="#2C1810" stroke-width="3" fill="none" stroke-linecap="round"/>
+				</svg>
+			</div>
+		</div>
+
+		<!-- Cover Screen -->
+		<div id="cover-screen" class="fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-700" style="background: #FBF5E8;">
+			<div class="text-center px-6 md:px-8">
+				<h1 class="text-3xl md:text-5xl lg:text-6xl mb-3 md:mb-4" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #6FA8DC; line-height: 1.3;">
+					나에게 딱! 맞는<br>BEE 겨울 특강 과목은?
+				</h1>
+				<p class="text-lg md:text-xl lg:text-2xl mb-8 md:mb-10" style="font-family: 'Pretendard'; color: #8AB4E5;">당신을 위한 맞춤 과목 찾기</p>
+				<button
+					id="start-btn"
+					class="px-8 py-3 md:px-12 md:py-4 rounded-full text-white text-lg md:text-xl shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300"
+					style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); font-family: 'Ongeullip Cocoa'; font-weight: 700; filter: url(#crayon-texture);"
+				>
+					시작하기
+				</button>
+			</div>
+		</div>
+
+		<!-- Restart Widget (shown only on result screen) -->
+		<div id="restart-widget" class="fixed bottom-16 md:bottom-24 left-1/2 transform -translate-x-1/2 hidden z-50 opacity-0 transition-opacity duration-500">
+			<button
+				id="restart-btn"
+				class="px-6 py-3 md:px-8 md:py-4 rounded-full text-white text-base md:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+				style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); font-family: 'Ongeullip Cocoa'; font-weight: 700; filter: url(#crayon-texture);"
+			>
+				처음부터 다시 선택하기
+			</button>
+		</div>
+
+		<!-- Flowchart Container -->
+		<div class="relative w-full overflow-hidden" style="min-height: 800px;">
+			<!-- SVG for arrows with pencil texture -->
+			<svg id="arrows-svg" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1; transform-origin: 0 0; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); overflow: visible;">
+				<defs>
+					<!-- Crayon/Pencil texture filter for green (YES) -->
+					<filter id="pencil-green">
+						<feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="5" result="noise" seed="2" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.5" />
+					</filter>
+					<!-- Crayon/Pencil texture filter for pink (NO) -->
+					<filter id="pencil-pink">
+						<feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="5" result="noise" seed="5" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.5" />
+					</filter>
+					<!-- Crayon texture for nodes and buttons -->
+					<filter id="crayon-texture">
+						<feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="4" result="noise" seed="10" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.4" />
+					</filter>
+					<!-- Stronger crayon texture for circular nodes -->
+					<filter id="crayon-circle">
+						<feTurbulence type="fractalNoise" baseFrequency="3.5" numOctaves="6" result="noise" seed="15" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.8" />
+					</filter>
+					<!-- Crayon texture for text -->
+					<filter id="crayon-text">
+						<feTurbulence type="fractalNoise" baseFrequency="4" numOctaves="3" result="noise" seed="20" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.2" />
+					</filter>
+				</defs>
+			</svg>
+
+			<!-- Flowchart nodes -->
+			<div id="flowchart" class="relative w-full h-full" style="z-index: 2; transform-origin: 0 0; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);">
+				<!-- Nodes will be positioned absolutely -->
+			</div>
+		</div>
+
+	</div>
+
+	<style>
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Floating animations for decorations */
+		@keyframes float1 {
+			0%, 100% {
+				transform: translate(0, 0) rotate(0deg);
+			}
+			25% {
+				transform: translate(10px, -15px) rotate(5deg);
+			}
+			50% {
+				transform: translate(-5px, -25px) rotate(-3deg);
+			}
+			75% {
+				transform: translate(-15px, -10px) rotate(7deg);
+			}
+		}
+
+		@keyframes float2 {
+			0%, 100% {
+				transform: translate(0, 0) rotate(0deg);
+			}
+			33% {
+				transform: translate(-12px, 18px) rotate(-4deg);
+			}
+			66% {
+				transform: translate(8px, -12px) rotate(6deg);
+			}
+		}
+
+		@keyframes float3 {
+			0%, 100% {
+				transform: translate(0, 0) scale(1);
+			}
+			50% {
+				transform: translate(15px, 20px) scale(1.1);
+			}
+		}
+
+		@keyframes rotate1 {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes rotate2 {
+			from {
+				transform: rotate(360deg);
+			}
+			to {
+				transform: rotate(0deg);
+			}
+		}
+
+		/* Touch feedback for buttons */
+		button {
+			position: relative;
+			overflow: hidden;
+			transition: all 0.15s ease;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		button:active {
+			transform: scale(0.95) !important;
+			filter: brightness(0.9);
+		}
+
+		/* Ripple effect */
+		button::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 0;
+			height: 0;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.5);
+			transform: translate(-50%, -50%);
+			transition: width 0.6s, height 0.6s;
+		}
+
+		button:active::after {
+			width: 300px;
+			height: 300px;
+			transition: 0s;
+		}
+
+		/* Back button hover effect */
+		.back-btn {
+			transition: all 0.2s ease;
+		}
+
+		.back-btn:hover {
+			filter: url(#crayon-texture) !important;
+		}
+	</style>
+
+	<script>
+		// Loading screen animation
+		const loadingScreen = document.getElementById('loading-screen');
+		const mainContent = document.getElementById('main-content');
+
+		// Hide loading screen and show content after animation
+		window.addEventListener('load', () => {
+			setTimeout(() => {
+				if (loadingScreen) {
+					loadingScreen.style.opacity = '0';
+					setTimeout(() => {
+						loadingScreen.style.display = 'none';
+					}, 700);
+				}
+				if (mainContent) {
+					mainContent.style.opacity = '1';
+					mainContent.style.transition = 'opacity 0.7s ease-out';
+				}
+			}, 1500); // Show loading for 1.5 seconds
+		});
+
+		// Flow data structure with positions
+		const flowData: Record<number, any> = {
+			1: {
+				text: "나는 온라인(ZOOM)\n수업을 선호한다",
+				yes: 2,
+				no: 3,
+				x: 180,
+				y: 400,
+				isQuestion: true
+			},
+			2: {
+				text: "나는 OBC 포함\n갈라디아서/로마서를\n수강했다",
+				yes: 14,
+				no: 12,
+				x: 430,
+				y: 150,
+				isQuestion: true
+			},
+			3: {
+				text: "나는 갈라디아서를\n수강했다",
+				yes: 10,
+				no: 7,
+				x: 430,
+				y: 500,
+				isQuestion: true
+			},
+			4: {
+				text: "Perfect Match! 🎯",
+				book: "고린도전서",
+				isResult: true,
+				x: 830,
+				y: 50
+			},
+			5: {
+				text: "Perfect Match! 🎯",
+				book: "그분이 지으신 마음",
+				isResult: true,
+				x: 830,
+				y: 200
+			},
+			6: {
+				text: "Perfect Match! 🎯",
+				book: "히브리서",
+				isResult: true,
+				x: 830,
+				y: 400
+			},
+			7: {
+				text: "한 해를 마무리하며\n신약 전체를\n읽어보고 싶다",
+				yes: 9,
+				no: 8,
+				x: 680,
+				y: 600,
+				isQuestion: true
+			},
+			8: {
+				text: "Perfect Match! 🎯",
+				book: "갈라디아서(대면, 금오전)",
+				isResult: true,
+				x: 980,
+				y: 550
+			},
+			9: {
+				text: "Perfect Match! 🎯",
+				book: "성경을 펼쳐라(신약)",
+				isResult: true,
+				x: 980,
+				y: 700
+			},
+			10: {
+				text: "로마서 수강도\n완료했다",
+				yes: 6,
+				no: 11,
+				x: 650,
+				y: 450,
+				isQuestion: true
+			},
+			11: {
+				text: "Perfect Match! 🎯",
+				book: "로마서(대면, 목오후)",
+				isResult: true,
+				x: 850,
+				y: 550
+			},
+			12: {
+				text: "모든 BEE과목을\n거침없이 듣게 해주는\n자격을 얻고 싶다",
+				yes: 13,
+				no: 5,
+				x: 650,
+				y: 250,
+				isQuestion: true
+			},
+			13: {
+				text: "Perfect Match! 🎯",
+				book: "갈라디아서",
+				isResult: true,
+				x: 870,
+				y: 200
+			},
+			14: {
+				text: "나는 언제나 사도 OO의\n서신이 좋았다",
+				yes: 4,
+				no: 15,
+				yesLabel: "바울",
+				noLabel: "요한",
+				x: 600,
+				y: -50,
+				isQuestion: true
+			},
+			15: {
+				text: "Perfect Match! 🎯",
+				book: "요한복음",
+				isResult: true,
+				x: 850,
+				y: -50
+			}
+		};
+
+		const connections = [
+			{ from: 1, to: 2, type: 'yes' },
+			{ from: 1, to: 3, type: 'no' },
+			{ from: 2, to: 14, type: 'yes' },
+			{ from: 2, to: 12, type: 'no' },
+			{ from: 14, to: 4, type: 'yes' },
+			{ from: 14, to: 15, type: 'no' },
+			{ from: 12, to: 13, type: 'yes' },
+			{ from: 12, to: 5, type: 'no' },
+			{ from: 3, to: 10, type: 'yes' },
+			{ from: 3, to: 7, type: 'no' },
+			{ from: 10, to: 6, type: 'yes' },
+			{ from: 10, to: 11, type: 'no' },
+			{ from: 7, to: 9, type: 'yes' },
+			{ from: 7, to: 8, type: 'no' }
+		];
+
+		const flowchart = document.getElementById('flowchart');
+		const arrowsSvg = document.getElementById('arrows-svg');
+		const coverScreen = document.getElementById('cover-screen');
+		const startBtn = document.getElementById('start-btn');
+		const restartWidget = document.getElementById('restart-widget');
+		const restartBtn = document.getElementById('restart-btn');
+		let selectedPath: number[] = [];
+		let createdNodes = new Set<number>();
+		let hasStarted = false;
+
+		// Prezi-like zoom and pan to node
+		function zoomToNode(nodeId: number) {
+			const data = flowData[nodeId];
+			const containerWidth = window.innerWidth;
+			const containerHeight = window.innerHeight;
+
+			// Calculate scale (zoom level) - smaller on mobile
+			const isMobile = containerWidth < 768;
+			const scale = isMobile ? 1.2 : 1.5;
+
+			// For first node on desktop, position slightly to the left
+			let targetX, targetY;
+			if (nodeId === 1 && !isMobile) {
+				targetX = containerWidth * 0.35; // 35% from left on desktop
+				targetY = containerHeight / 2;
+			} else {
+				targetX = containerWidth / 2;
+				targetY = containerHeight / 2;
+			}
+
+			// Calculate translation
+			const translateX = targetX - (data.x * scale);
+			const translateY = targetY - (data.y * scale);
+
+			// Apply transform to flowchart and SVG
+			if (flowchart) {
+				flowchart.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+			}
+			if (arrowsSvg) {
+				arrowsSvg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+			}
+		}
+
+		// Zoom to show entire path (for result nodes)
+		function zoomToPath(path: number[]) {
+			if (path.length === 0) return;
+
+			const containerWidth = window.innerWidth;
+			const containerHeight = window.innerHeight;
+
+			// Find bounding box of all nodes in the path
+			let minX = Infinity, maxX = -Infinity;
+			let minY = Infinity, maxY = -Infinity;
+
+			path.forEach(nodeId => {
+				const node = flowData[nodeId];
+				if (node) {
+					minX = Math.min(minX, node.x);
+					maxX = Math.max(maxX, node.x);
+					minY = Math.min(minY, node.y);
+					maxY = Math.max(maxY, node.y);
+				}
+			});
+
+			// Add padding
+			const padding = 250;
+			minX -= padding;
+			maxX += padding;
+			minY -= padding;
+			maxY += padding;
+
+			// Calculate scale to fit all nodes
+			const pathWidth = maxX - minX;
+			const pathHeight = maxY - minY;
+			const scaleX = containerWidth / pathWidth;
+			const scaleY = containerHeight / pathHeight;
+			const scale = Math.min(scaleX, scaleY, 0.9); // Cap at 0.9x
+
+			// Position result node (last node) to the right side (80% of screen width)
+			const resultNode = flowData[path[path.length - 1]];
+			const targetX = containerWidth * 0.75; // Result node at 75% from left (= right side)
+			const translateX = targetX - (resultNode.x * scale);
+
+			// Center vertically
+			const centerY = (minY + maxY) / 2;
+			const translateY = (containerHeight / 2) - (centerY * scale);
+
+			// Apply transform
+			if (flowchart) {
+				flowchart.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+			}
+			if (arrowsSvg) {
+				arrowsSvg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+			}
+		}
+
+		function drawArrow(x1: number, y1: number, x2: number, y2: number, type: string, highlighted: boolean) {
+			const color = type === 'yes' ? '#42A5F5' : '#F06292';
+			const filter = type === 'yes' ? 'url(#pencil-green)' : 'url(#pencil-pink)';
+
+			// Adjust start and end points to account for node size
+			const nodeRadius = 80;
+
+			const dx = x2 - x1;
+			const dy = y2 - y1;
+			const angle = Math.atan2(dy, dx);
+
+			// Start point from circular node edge
+			const startX = x1 + nodeRadius * Math.cos(angle);
+			const startY = y1 + nodeRadius * Math.sin(angle);
+
+			// Find the target node to check if it's a result
+			const targetNode = Object.values(flowData).find(node => node.x === x2 && node.y === y2);
+			const isTargetResult = targetNode?.isResult || false;
+
+			// End point - stop at the edge of the target node
+			let endX, endY;
+			if (isTargetResult) {
+				// For result boxes, calculate distance based on box size
+				// Mobile: 260px / 2 = 130px, Desktop: 320px / 2 = 160px
+				const isMobile = window.innerWidth < 768;
+				const boxHalfWidth = isMobile ? 130 : 160;
+				const boxHalfHeight = isMobile ? 80 : 100; // Approximate half height
+
+				// Calculate which edge the arrow hits based on angle
+				const absAngle = Math.abs(angle);
+				const threshold = Math.atan2(boxHalfHeight, boxHalfWidth);
+
+				if (absAngle < threshold || absAngle > Math.PI - threshold) {
+					// Hits left/right edge
+					endX = x2 - Math.sign(Math.cos(angle)) * boxHalfWidth;
+					endY = y2 - boxHalfWidth * Math.tan(angle) * Math.sign(Math.cos(angle));
+				} else {
+					// Hits top/bottom edge
+					endX = x2 - boxHalfHeight / Math.tan(angle) * Math.sign(Math.sin(angle));
+					endY = y2 - Math.sign(Math.sin(angle)) * boxHalfHeight;
+				}
+			} else {
+				// For circular nodes, stop at the circle edge
+				endX = x2 - nodeRadius * Math.cos(angle);
+				endY = y2 - nodeRadius * Math.sin(angle);
+			}
+
+			// Create curved path
+			const controlX = startX + (endX - startX) * 0.5;
+			const controlY = startY + (endY - startY) * 0.5;
+
+			const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			const d = `M ${startX} ${startY} Q ${controlX} ${controlY}, ${endX} ${endY}`;
+			path.setAttribute('d', d);
+			path.setAttribute('stroke', color);
+			path.setAttribute('stroke-width', highlighted ? '5' : '3');
+			path.setAttribute('fill', 'none');
+			path.setAttribute('stroke-linecap', 'round');
+			path.setAttribute('filter', filter);
+			path.setAttribute('opacity', '1');
+			path.setAttribute('class', 'arrow-path');
+
+			// Create arrowhead
+			const arrowHead = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+			const arrowSize = 14;
+			const arrowAngle = Math.atan2(endY - controlY, endX - controlX);
+			const point1X = endX;
+			const point1Y = endY;
+			const point2X = endX - arrowSize * Math.cos(arrowAngle - Math.PI / 6);
+			const point2Y = endY - arrowSize * Math.sin(arrowAngle - Math.PI / 6);
+			const point3X = endX - arrowSize * Math.cos(arrowAngle + Math.PI / 6);
+			const point3Y = endY - arrowSize * Math.sin(arrowAngle + Math.PI / 6);
+
+			arrowHead.setAttribute('points', `${point1X},${point1Y} ${point2X},${point2Y} ${point3X},${point3Y}`);
+			arrowHead.setAttribute('fill', color);
+			arrowHead.setAttribute('filter', filter);
+			arrowHead.setAttribute('opacity', '1');
+			arrowHead.setAttribute('class', 'arrow-head');
+
+			arrowsSvg?.appendChild(path);
+			arrowsSvg?.appendChild(arrowHead);
+		}
+
+		// Create a single node
+		function createNode(id: number) {
+			if (createdNodes.has(id)) return;
+			createdNodes.add(id);
+
+			const data = flowData[id];
+			const node = document.createElement('div');
+			node.id = `node-${id}`;
+			node.className = 'absolute';
+			node.style.left = `${data.x}px`;
+			node.style.top = `${data.y}px`;
+			node.style.transform = 'translate(-50%, -50%)';
+			node.style.opacity = '0';
+			node.style.transition = 'opacity 0.5s ease-out';
+
+			if (data.isResult) {
+				// Result node
+				const isMobile = window.innerWidth < 768;
+				node.innerHTML = `
+					<div class="relative" style="width: ${isMobile ? '260px' : '320px'};">
+						<!-- Background box with crayon effect -->
+						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '1rem' : '1.5rem'};"></div>
+						<!-- Text layer on top without filter -->
+						<div class="relative rounded-xl" style="padding: ${isMobile ? '1rem' : '1.5rem'};">
+							<h3 class="mb-3 text-center" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #E8734E; font-size: ${isMobile ? '1.25rem' : '1.5rem'};">${data.text}</h3>
+							<div class="text-center rounded-lg" style="background: #FFF3CD; padding: ${isMobile ? '0.5rem' : '0.75rem'};">
+								<p class="font-bold" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '0.95rem' : '1.125rem'};">${data.book}</p>
+							</div>
+						</div>
+					</div>
+				`;
+			} else {
+				// Question node (circular)
+				const isMobile = window.innerWidth < 768;
+				const nodeSize = isMobile ? '9rem' : '10rem'; // 144px vs 160px
+				const textSize = isMobile ? '0.8rem' : '0.875rem';
+				const buttonWidth = isMobile ? '65px' : '75px'; // 고정 너비로 통일
+				const buttonHeight = isMobile ? '36px' : '40px'; // 고정 높이 추가
+				const buttonPadding = isMobile ? 'padding: 0.6rem 0;' : 'padding: 0.75rem 0;'; // 좌우 패딩 제거
+
+				const showBackButton = selectedPath.length > 1; // Show back button if not first node
+				const yesLabel = data.yesLabel || 'YES';
+				const noLabel = data.noLabel || 'NO';
+
+				node.innerHTML = `
+					<div class="relative">
+						<!-- Background circle with crayon effect -->
+						<div class="rounded-full bg-white shadow-lg border-4 absolute" style="width: ${nodeSize}; height: ${nodeSize}; border-color: #FFD54F; filter: url(#crayon-circle);"></div>
+						<!-- Text layer on top without filter -->
+						<div class="rounded-full flex items-center justify-center relative" style="width: ${nodeSize}; height: ${nodeSize}; padding: ${isMobile ? '0.75rem' : '1rem'};">
+							<h3 class="text-center whitespace-pre-line leading-tight" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #5D4E37; font-size: ${textSize};">${data.text}</h3>
+						</div>
+						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: ${isMobile ? '-3.5rem' : '-4rem'}; z-index: 100; align-items: baseline;">
+							<button
+								class="yes-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
+								style="background: #42A5F5; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${isMobile ? '0.8rem' : '0.875rem'}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; vertical-align: top;"
+								data-node="${id}"
+								data-next="${data.yes}"
+							><span style="filter: url(#crayon-text); pointer-events: none; display: block; line-height: ${buttonHeight}; height: ${buttonHeight};">${yesLabel}</span></button>
+							<button
+								class="no-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
+								style="background: #F06292; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${isMobile ? '0.8rem' : '0.875rem'}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; vertical-align: top;"
+								data-node="${id}"
+								data-next="${data.no}"
+							><span style="filter: url(#crayon-text); pointer-events: none; display: block; line-height: ${buttonHeight}; height: ${buttonHeight};">${noLabel}</span></button>
+						</div>
+						${showBackButton ? `
+						<div class="absolute left-1/2 transform -translate-x-1/2" style="bottom: ${isMobile ? '-8.5rem' : '-9rem'}; z-index: 100;">
+							<button
+								class="back-btn rounded-full hover:scale-105 shadow-md"
+								style="background: #9E9E9E; font-family: 'Ongeullip Cocoa'; color: white; pointer-events: auto; cursor: pointer; padding: ${isMobile ? '0.4rem 1rem' : '0.5rem 1.2rem'}; display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; width: auto; font-size: ${isMobile ? '0.65rem' : '0.7rem'}; transition: all 0.2s ease;"
+								data-node="${id}"
+							>
+								<span style="pointer-events: none; font-weight: 700;">← 뒤로가기</span>
+							</button>
+						</div>
+						` : ''}
+					</div>
+				`;
+			}
+
+			flowchart?.appendChild(node);
+
+			// Zoom to this node (Prezi effect)
+			if (data.isResult) {
+				// For result nodes, position on the right side
+				const containerWidth = window.innerWidth;
+				const containerHeight = window.innerHeight;
+				const isMobile = containerWidth < 768;
+				const scale = isMobile ? 1.2 : 1.5;
+				// Responsive positioning: 45% on mobile, 65% on desktop
+				const targetPercentage = isMobile ? 0.45 : 0.65;
+				const targetX = containerWidth * targetPercentage;
+				const translateX = targetX - (data.x * scale);
+				const translateY = (containerHeight / 2) - (data.y * scale);
+
+				if (flowchart) {
+					flowchart.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+				}
+				if (arrowsSvg) {
+					arrowsSvg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+				}
+			} else {
+				zoomToNode(id);
+			}
+
+			// Fade in animation
+			setTimeout(() => {
+				node.style.opacity = '1';
+			}, 100);
+
+			// Show restart widget if result node
+			if (data.isResult) {
+				setTimeout(() => {
+					if (restartWidget) {
+						restartWidget.classList.remove('hidden');
+						setTimeout(() => {
+							restartWidget.style.opacity = '1';
+						}, 100);
+					}
+				}, 500);
+			}
+
+			// Attach button listeners for this specific node
+			if (!data.isResult) {
+				// Immediately attach listeners (no delay)
+				const yesBtn = node.querySelector('.yes-btn') as HTMLButtonElement;
+				const noBtn = node.querySelector('.no-btn') as HTMLButtonElement;
+				const backBtn = node.querySelector('.back-btn') as HTMLButtonElement;
+
+				if (yesBtn && !yesBtn.hasAttribute('data-listener-attached')) {
+					yesBtn.setAttribute('data-listener-attached', 'true');
+					yesBtn.addEventListener('click', (e) => {
+						e.preventDefault();
+						e.stopPropagation();
+						const nodeId = parseInt(yesBtn.getAttribute('data-node') || '0');
+						const nextId = parseInt(yesBtn.getAttribute('data-next') || '0');
+						handleChoice(nodeId, nextId, 'yes');
+					}, { once: false });
+				}
+
+				if (noBtn && !noBtn.hasAttribute('data-listener-attached')) {
+					noBtn.setAttribute('data-listener-attached', 'true');
+					noBtn.addEventListener('click', (e) => {
+						e.preventDefault();
+						e.stopPropagation();
+						const nodeId = parseInt(noBtn.getAttribute('data-node') || '0');
+						const nextId = parseInt(noBtn.getAttribute('data-next') || '0');
+						handleChoice(nodeId, nextId, 'no');
+					}, { once: false });
+				}
+
+				if (backBtn && !backBtn.hasAttribute('data-listener-attached')) {
+					backBtn.setAttribute('data-listener-attached', 'true');
+					backBtn.addEventListener('click', (e) => {
+						e.preventDefault();
+						e.stopPropagation();
+						handleGoBack();
+					}, { once: false });
+
+					// Add hover effect for crayon texture
+					backBtn.addEventListener('mouseenter', () => {
+						backBtn.style.filter = 'url(#crayon-texture)';
+					});
+					backBtn.addEventListener('mouseleave', () => {
+						backBtn.style.filter = 'none';
+					});
+				}
+			}
+		}
+
+		// Handle go back
+		function handleGoBack() {
+			if (selectedPath.length <= 1) return; // Can't go back from first node
+
+			// Remove current node
+			const currentNodeId = selectedPath[selectedPath.length - 1];
+			const currentNodeElement = document.getElementById(`node-${currentNodeId}`);
+			if (currentNodeElement) {
+				currentNodeElement.remove();
+			}
+			createdNodes.delete(currentNodeId);
+			selectedPath.pop();
+
+			// Remove previous node to recreate it with buttons
+			const previousNodeId = selectedPath[selectedPath.length - 1];
+			const previousNodeElement = document.getElementById(`node-${previousNodeId}`);
+			if (previousNodeElement) {
+				previousNodeElement.remove();
+			}
+			createdNodes.delete(previousNodeId);
+
+			// Clear all arrows and redraw path
+			if (arrowsSvg) {
+				const arrows = arrowsSvg.querySelectorAll('.arrow-path, .arrow-head');
+				arrows.forEach(arrow => arrow.remove());
+			}
+
+			// Redraw arrows for remaining path
+			for (let i = 0; i < selectedPath.length - 1; i++) {
+				const fromNode = flowData[selectedPath[i]];
+				const toNode = flowData[selectedPath[i + 1]];
+
+				// Determine if it was a yes or no choice
+				const choiceType = fromNode.yes === selectedPath[i + 1] ? 'yes' : 'no';
+				drawArrow(fromNode.x, fromNode.y, toNode.x, toNode.y, choiceType, true);
+			}
+
+			// Recreate previous node with buttons visible
+			createNode(previousNodeId);
+		}
+
+		// Handle choice
+		function handleChoice(nodeId: number, nextId: number, choice: 'yes' | 'no') {
+			// Prevent double-click by checking if next node already exists
+			if (createdNodes.has(nextId)) {
+				return;
+			}
+
+			selectedPath.push(nextId);
+
+			// Immediately disable and hide buttons from current node to prevent double-click
+			const currentNode = document.getElementById(`node-${nodeId}`);
+			const buttons = currentNode?.querySelectorAll('button');
+			buttons?.forEach(btn => {
+				(btn as HTMLButtonElement).disabled = true;
+				btn.style.opacity = '0';
+				btn.style.pointerEvents = 'none';
+			});
+
+			// Draw arrow
+			const from = flowData[nodeId];
+			const to = flowData[nextId];
+			drawArrow(from.x, from.y, to.x, to.y, choice, true);
+
+			// Remove buttons after animation
+			setTimeout(() => {
+				buttons?.forEach(btn => btn.remove());
+			}, 300);
+
+			// Create next node
+			setTimeout(() => {
+				createNode(nextId);
+			}, 300);
+		}
+
+
+		// Start button click handler
+		startBtn?.addEventListener('click', () => {
+			if (!hasStarted) {
+				hasStarted = true;
+
+				// Hide cover screen
+				if (coverScreen) {
+					coverScreen.style.opacity = '0';
+					setTimeout(() => {
+						coverScreen.style.display = 'none';
+					}, 700);
+				}
+
+				// Create first node with delay
+				setTimeout(() => {
+					createNode(1);
+					selectedPath = [1];
+				}, 800);
+			}
+		});
+
+		// Initialize - don't create node yet, wait for start button
+		selectedPath = [];
+
+		// Restart button click handler
+		restartBtn?.addEventListener('click', () => {
+			// Hide restart widget
+			if (restartWidget) {
+				restartWidget.style.opacity = '0';
+				setTimeout(() => {
+					restartWidget.classList.add('hidden');
+				}, 300);
+			}
+
+			// Reset state
+			selectedPath = [];
+			createdNodes.clear();
+
+			// Clear flowchart
+			if (flowchart) flowchart.innerHTML = '';
+
+			// Reset SVG filters
+			if (arrowsSvg) arrowsSvg.innerHTML = `
+				<defs>
+					<filter id="pencil-green">
+						<feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="5" result="noise" seed="2" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.5" />
+					</filter>
+					<filter id="pencil-pink">
+						<feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="5" result="noise" seed="5" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.5" />
+					</filter>
+					<filter id="crayon-texture">
+						<feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="4" result="noise" seed="10" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.4" />
+					</filter>
+					<filter id="crayon-circle">
+						<feTurbulence type="fractalNoise" baseFrequency="3.5" numOctaves="6" result="noise" seed="15" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.8" />
+					</filter>
+					<filter id="crayon-text">
+						<feTurbulence type="fractalNoise" baseFrequency="4" numOctaves="3" result="noise" seed="20" />
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+						<feGaussianBlur stdDeviation="0.2" />
+					</filter>
+				</defs>
+			`;
+
+			// Go to first node directly (no cover screen)
+			setTimeout(() => {
+				createNode(1);
+				selectedPath = [1];
+			}, 400);
+		});
+	</script>
+</Layout>

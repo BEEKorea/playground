@@ -1,0 +1,146 @@
+/* Mobile UX Improvements */
+
+/* 1. 터치 영역 최적화 (최소 44x44px) */
+@media (max-width: 768px) {
+  button,
+  a[role="button"],
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 작은 아이콘 버튼도 터치 영역 확보 */
+  button svg,
+  a[role="button"] svg {
+    pointer-events: none;
+  }
+}
+
+/* 2. 탭 하이라이트 제거 (더 깔끔한 UX) */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* 3. 텍스트 선택 개선 */
+button,
+[role="button"],
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 일반 텍스트는 선택 가능 */
+p,
+h1, h2, h3, h4, h5, h6,
+span:not([role="button"]) {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* 4. 스크롤 성능 개선 */
+.scroll-smooth {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* 5. 입력 필드 모바일 최적화 */
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* iOS zoom 방지 */
+    padding: 12px;
+  }
+
+  /* 포커스 시 아웃라인 명확하게 */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid #44C1C8;
+    outline-offset: 2px;
+  }
+}
+
+/* 6. 버튼 활성 상태 피드백 */
+button:active,
+a[role="button"]:active,
+.touch-target:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* 7. 모바일 네비게이션 개선 */
+@media (max-width: 768px) {
+  nav a,
+  nav button {
+    padding: 12px 16px;
+    min-height: 48px;
+  }
+}
+
+/* 8. 카드/링크 터치 피드백 */
+.card:active,
+a.card:active {
+  transform: scale(0.99);
+  transition: transform 0.1s ease;
+}
+
+/* 9. 스와이프 가능 요소 힌트 */
+.swipeable {
+  touch-action: pan-x;
+  cursor: grab;
+}
+
+.swipeable:active {
+  cursor: grabbing;
+}
+
+/* 10. 모달/오버레이 스크롤 방지 */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* 11. 안전 영역 (노치 대응) */
+@supports (padding: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* 12. 가로 스크롤 방지 */
+body {
+  overflow-x: hidden;
+}
+
+/* 13. 모바일 폰트 가독성 */
+@media (max-width: 768px) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* 14. 링크/버튼 간격 (실수 방지) */
+@media (max-width: 768px) {
+  a + a,
+  button + button {
+    margin-top: 8px;
+  }
+
+  nav a + a,
+  nav button + button {
+    margin-top: 0;
+    margin-left: 8px;
+  }
+}

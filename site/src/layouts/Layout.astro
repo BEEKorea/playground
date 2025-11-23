@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import '../styles/animations.css';
+import '../styles/mobile-ux.css';
+import Analytics from '@vercel/analytics/astro';
+import { ViewTransitions } from 'astro:transitions';
+
+export interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	keywords?: string;
+}
+
+const {
+	title,
+	description = "메디엑세스는 전문성과 사랑의 헌신으로 생명을 존중하고 모두의 건강과 행복을 실현하는 글로벌 보건의료 플랫폼 NGO입니다.",
+	image = "/team-photo.webp",
+	keywords = "메디엑세스, MediAccess, 의료봉사, NGO, 국제의료, 해외진료, 의료선교, 보건의료, 글로벌헬스"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://mediaccess.kr');
+const imageURL = new URL(image, Astro.site || 'https://mediaccess.kr');
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:locale" content="ko_KR" />
+		<meta property="og:site_name" content="메디엑세스" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+
+		<!-- Preload critical fonts -->
+		<link rel="preload" href="/fonts/Pretendard-Regular.otf" as="font" type="font/otf" crossorigin />
+		<link rel="preload" href="/fonts/Freesentation-4Regular.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/fonts/온글잎 류류체.ttf" as="font" type="font/ttf" crossorigin />
+
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "사단법인 메디엑세스",
+			"alternateName": "MediAccess",
+			"url": "https://mediaccess.kr",
+			"logo": "https://mediaccess.kr/mediaccess-logo-white.webp",
+			"description": "전문성과 사랑의 헌신으로 생명을 존중하고 모두의 건강과 행복을 실현하는 글로벌 보건의료 플랫폼 NGO",
+			"foundingDate": "1985",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "바우뫼로31길 70",
+				"addressLocality": "서초구",
+				"addressRegion": "서울특별시",
+				"addressCountry": "KR"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+82-2-570-7110",
+				"contactType": "customer service",
+				"email": "mediaccess@naver.com"
+			},
+			"sameAs": [
+				"https://pf.kakao.com/_DaRCn"
+			]
+		}
+		</script>
+
+		<ViewTransitions />
+	</head>
+	<body>
+		<slot />
+		<Analytics />
+		<script>
+			import { initScrollAnimations } from '../scripts/scroll-animations.ts';
+		</script>
+	</body>
+</html>
