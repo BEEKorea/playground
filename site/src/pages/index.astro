@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Shorts Card -->
-        <a href="/shorts" class="group block bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-8 border-2 border-transparent hover:border-[#44C1C8] transition-all duration-300 hover:shadow-xl">
+        <a href={`${import.meta.env.BASE_URL}/shorts/`} class="group block bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-8 border-2 border-transparent hover:border-[#44C1C8] transition-all duration-300 hover:shadow-xl">
           <div class="text-center">
             <div class="text-6xl mb-4">📱</div>
             <h2 class="text-2xl font-bold mb-3 text-[#255768] group-hover:text-[#44C1C8] transition-colors" style="font-family: 'Ongeullip Cocoa';">
@@ -37,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Test Card -->
-        <a href="/test" class="group block bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-8 border-2 border-transparent hover:border-[#44C1C8] transition-all duration-300 hover:shadow-xl">
+        <a href={`${import.meta.env.BASE_URL}/test`} class="group block bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-8 border-2 border-transparent hover:border-[#44C1C8] transition-all duration-300 hover:shadow-xl">
           <div class="text-center">
             <div class="text-6xl mb-4">🎯</div>
             <h2 class="text-2xl font-bold mb-3 text-[#255768] group-hover:text-[#44C1C8] transition-colors" style="font-family: 'Ongeullip Cocoa';">
