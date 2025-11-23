@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Import images
-import peep100 from '../../public/peep-100.png';
-import peep102 from '../../public/peep-102.png';
-import peep18 from '../../public/peep-18.png';
-import peep73 from '../../public/peep-73.png';
-import peep2 from '../../public/peep-2.png';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const peep100 = `${base}/peep-100.png`;
+const peep102 = `${base}/peep-102.png`;
+const peep18 = `${base}/peep-18.png`;
+const peep73 = `${base}/peep-73.png`;
+const peep2 = `${base}/peep-2.png`;
 ---
 
 <Layout title="쇼츠 - MediAccess">
