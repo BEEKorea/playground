@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Import images
+import peep100 from '../../public/peep-100.png';
+import peep102 from '../../public/peep-102.png';
+import peep18 from '../../public/peep-18.png';
+import peep73 from '../../public/peep-73.png';
+import peep2 from '../../public/peep-2.png';
 ---
 
 <Layout title="쇼츠 - MediAccess">
@@ -114,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="space-y-4 w-full max-w-sm">
 				<!-- Dialogue 1 -->
 				<div class="dialogue1 flex items-start gap-2 opacity-0">
-					<img src="/playground/peep-102.png" alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep102} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">그 사람이 말한 걸 그대로 믿는다고?</p>
 					</div>
@@ -122,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
 
 				<!-- Dialogue 2 -->
 				<div class="dialogue2 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src="/playground/peep-100.png" alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep100} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">바울 선생님이 우리는 믿음으로<br>구원받는다고 했어</p>
 					</div>
@@ -130,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
 
 				<!-- Dialogue 3 -->
 				<div class="dialogue3 flex items-start gap-2 opacity-0">
-					<img src="/playground/peep-102.png" alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep102} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">여기 봐봐. 율법을 지켜야 한다니까?</p>
 					</div>
@@ -138,7 +145,7 @@ import Layout from '../layouts/Layout.astro';
 
 				<!-- Dialogue 4 -->
 				<div class="dialogue4 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src="/playground/peep-100.png" alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep100} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">뭐가 맞는걸까?</p>
 					</div>
@@ -174,7 +181,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="space-y-4 w-full max-w-sm">
 				<!-- Dialogue 1 -->
 				<div class="dialogue1-s2 flex items-start gap-2 opacity-0">
-					<img src="/playground/peep-18.png" alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep18} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">드디어 교회 등록했구나!</p>
 					</div>
@@ -182,7 +189,7 @@ import Layout from '../layouts/Layout.astro';
 
 				<!-- Dialogue 2 -->
 				<div class="dialogue2-s2 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src="/playground/peep-73.png" alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep73} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">응! 이제 완벽한 크리스천😊</p>
 					</div>
@@ -190,7 +197,7 @@ import Layout from '../layouts/Layout.astro';
 
 				<!-- Dialogue 3 -->
 				<div class="dialogue3-s2 flex items-start gap-2 opacity-0">
-					<img src="/playground/peep-18.png" alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep18} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">에이~ 헌금, 팀모임, 봉사는?</p>
 					</div>
@@ -198,7 +205,7 @@ import Layout from '../layouts/Layout.astro';
 
 				<!-- Dialogue 4 -->
 				<div class="dialogue4-s2 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src="/playground/peep-73.png" alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={peep73} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">헐... 믿음만으로는 안 돼...?</p>
 					</div>
@@ -207,7 +214,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<!-- Character Icon -->
 			<div class="scene2-icons absolute bottom-16 opacity-0">
-				<img src="/playground/peep-2.png" alt="캐릭터" class="w-16 md:w-20" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));" />
+				<img src={peep2} alt="캐릭터" class="w-16 md:w-20" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));" />
 			</div>
 		</div>
 
