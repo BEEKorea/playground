@@ -644,10 +644,10 @@ import Layout from '../layouts/Layout.astro';
 			let endX, endY;
 			if (isTargetResult) {
 				// For result boxes, calculate distance based on box size
-				// Mobile: 160x140, Desktop: 180x160
+				// Mobile: 160x110, Desktop: 180x130
 				const isMobile = window.innerWidth < 768;
 				const boxHalfWidth = isMobile ? 80 : 90;
-				const boxHalfHeight = isMobile ? 70 : 80;
+				const boxHalfHeight = isMobile ? 55 : 65;
 
 				// Calculate which edge the arrow hits based on angle
 				const absAngle = Math.abs(angle);
@@ -724,9 +724,9 @@ import Layout from '../layouts/Layout.astro';
 				// Result node
 				const isMobile = window.innerWidth < 768;
 				node.innerHTML = `
-					<div class="relative" style="width: ${isMobile ? '160px' : '180px'}; height: ${isMobile ? '140px' : '160px'};">
+					<div class="relative" style="width: ${isMobile ? '160px' : '180px'}; height: ${isMobile ? '110px' : '130px'};">
 						<!-- Background box with crayon effect and doodles -->
-						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '0.75rem' : '1rem'}; overflow: hidden;">
+						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '0.5rem' : '0.75rem'}; overflow: hidden;">
 							<!-- Doodle pattern -->
 							<svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.15; pointer-events: none;">
 								<!-- Stars -->
