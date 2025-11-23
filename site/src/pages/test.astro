@@ -165,45 +165,6 @@ import Layout from '../layouts/Layout.astro';
 			</button>
 		</div>
 
-		<!-- Action Widgets (shown only on result screen) -->
-		<div id="action-widgets" class="fixed bottom-4 md:bottom-8 left-4 md:left-8 hidden z-50 opacity-0 transition-opacity duration-500 flex gap-3 md:gap-4">
-			<!-- Login Widget (Laptop) -->
-			<a href="https://www.beekorea.org/lms/login/" target="_blank" rel="noopener noreferrer"
-				class="flex flex-col items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-3"
-				style="width: 80px; height: 80px; border-color: #6FA8DC; filter: url(#crayon-texture); padding: 0.5rem;">
-				<svg width="40" height="40" viewBox="0 0 100 100" style="margin-bottom: 0.25rem;">
-					<!-- Laptop screen -->
-					<rect x="20" y="25" width="60" height="40" fill="#FFD700" stroke="#000" stroke-width="3" rx="2"/>
-					<!-- Eye on screen -->
-					<ellipse cx="50" cy="45" rx="12" ry="8" fill="#FFF" stroke="#000" stroke-width="2"/>
-					<circle cx="50" cy="45" r="5" fill="#000"/>
-					<!-- Laptop base -->
-					<rect x="25" y="65" width="50" height="8" fill="#6FA8DC" stroke="#000" stroke-width="3"/>
-					<line x1="25" y1="65" x2="15" y2="73" stroke="#000" stroke-width="3"/>
-					<line x1="75" y1="65" x2="85" y2="73" stroke="#000" stroke-width="3"/>
-				</svg>
-				<p style="font-family: 'Ongeullip Cocoa'; font-size: 0.65rem; font-weight: 700; color: #6B5B4F; text-align: center; line-height: 1;">로그인</p>
-			</a>
-
-			<!-- Registration Widget (Letter Box) -->
-			<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer"
-				class="flex flex-col items-center justify-center bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border-3"
-				style="width: 80px; height: 80px; border-color: #FF6B9D; filter: url(#crayon-texture); padding: 0.5rem;">
-				<svg width="40" height="40" viewBox="0 0 100 100" style="margin-bottom: 0.25rem;">
-					<!-- Letter box -->
-					<rect x="25" y="40" width="50" height="35" fill="#FFD700" stroke="#000" stroke-width="3"/>
-					<path d="M 25 40 L 50 55 L 75 40" fill="none" stroke="#000" stroke-width="3"/>
-					<rect x="25" y="40" width="50" height="20" fill="#FF6B9D" stroke="#000" stroke-width="3"/>
-					<!-- Heart sticker -->
-					<path d="M 40 50 Q 38 47 35 50 Q 35 55 40 58 Q 45 55 45 50 Q 42 47 40 50 Z" fill="#6FA8DC"/>
-					<!-- Rocket hand -->
-					<path d="M 70 25 L 75 15 L 80 25 Z" fill="#6FA8DC" stroke="#000" stroke-width="2"/>
-					<ellipse cx="75" cy="27" rx="3" ry="5" fill="#6FA8DC" stroke="#000" stroke-width="2"/>
-				</svg>
-				<p style="font-family: 'Ongeullip Cocoa'; font-size: 0.65rem; font-weight: 700; color: #6B5B4F; text-align: center; line-height: 1;">수강신청</p>
-			</a>
-		</div>
-
 		<!-- Flowchart Container -->
 		<div class="relative w-full" style="min-height: 1000px; overflow: visible;">
 			<!-- SVG for arrows with pencil texture -->
@@ -551,7 +512,6 @@ import Layout from '../layouts/Layout.astro';
 		const startBtn = document.getElementById('start-btn');
 		const restartWidget = document.getElementById('restart-widget');
 		const restartBtn = document.getElementById('restart-btn');
-		const actionWidgets = document.getElementById('action-widgets');
 		let selectedPath: number[] = [];
 		let createdNodes = new Set<number>();
 		let hasStarted = false;
@@ -665,10 +625,10 @@ import Layout from '../layouts/Layout.astro';
 			let endX, endY;
 			if (isTargetResult) {
 				// For result boxes, calculate distance based on box size
-				// Mobile: 160x110, Desktop: 180x130
+				// Mobile: 160x160, Desktop: 180x180
 				const isMobile = window.innerWidth < 768;
 				const boxHalfWidth = isMobile ? 80 : 90;
-				const boxHalfHeight = isMobile ? 55 : 65;
+				const boxHalfHeight = isMobile ? 80 : 90;
 
 				// Calculate which edge the arrow hits based on angle
 				const absAngle = Math.abs(angle);
@@ -745,9 +705,9 @@ import Layout from '../layouts/Layout.astro';
 				// Result node
 				const isMobile = window.innerWidth < 768;
 				node.innerHTML = `
-					<div class="relative" style="width: ${isMobile ? '160px' : '180px'}; height: ${isMobile ? '110px' : '130px'};">
+					<div class="relative" style="width: ${isMobile ? '160px' : '180px'}; height: ${isMobile ? '160px' : '180px'};">
 						<!-- Background box with crayon effect and doodles -->
-						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '0.5rem' : '0.75rem'}; overflow: hidden;">
+						<div class="bg-white rounded-xl shadow-lg border-4 absolute inset-0" style="border-color: #F8BBD0; filter: url(#crayon-texture); padding: ${isMobile ? '0.75rem' : '1rem'}; overflow: hidden;">
 							<!-- Doodle pattern -->
 							<svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.15; pointer-events: none;">
 								<!-- Stars -->
@@ -774,13 +734,28 @@ import Layout from '../layouts/Layout.astro';
 								<path d="M220,100 L225,95 L230,100 L235,95" fill="none" stroke="#FF6B9D" stroke-width="1.5"/>
 							</svg>
 						</div>
-						<!-- Text layer on top without filter - centered -->
-						<div class="absolute inset-0 flex flex-col items-center justify-center" style="padding: ${isMobile ? '0.75rem' : '1rem'};">
-							<div class="text-center mb-1">
-								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '0.95rem' : '1.1rem'}; cursor: pointer; text-decoration: none;">${data.book}</a>
+						<!-- Text layer on top without filter -->
+						<div class="absolute inset-0 flex flex-col justify-between" style="padding: ${isMobile ? '0.75rem' : '1rem'};">
+							<div class="flex-1 flex flex-col items-center justify-center">
+								<div class="text-center mb-1">
+									<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '0.95rem' : '1.1rem'}; cursor: pointer; text-decoration: none;">${data.book}</a>
+								</div>
+								<div class="text-center">
+									<p style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #8B7355; font-size: ${isMobile ? '0.75rem' : '0.85rem'}; white-space: pre-line;">${data.time}</p>
+								</div>
 							</div>
-							<div class="text-center">
-								<p style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #8B7355; font-size: ${isMobile ? '0.75rem' : '0.85rem'}; white-space: pre-line;">${data.time}</p>
+							<!-- Action buttons at bottom -->
+							<div class="flex gap-2 justify-center" style="margin-top: 0.5rem;">
+								<a href="https://www.beekorea.org/lms/login/" target="_blank" rel="noopener noreferrer"
+									class="px-3 py-1.5 rounded-lg text-white text-xs font-bold hover:scale-105 transition-all duration-200"
+									style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); font-family: 'Ongeullip Cocoa';">
+									로그인
+								</a>
+								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer"
+									class="px-3 py-1.5 rounded-lg text-white text-xs font-bold hover:scale-105 transition-all duration-200"
+									style="background: linear-gradient(135deg, #FF6B9D 0%, #E85A8B 100%); font-family: 'Ongeullip Cocoa';">
+									수강신청
+								</a>
 							</div>
 						</div>
 					</div>
@@ -866,19 +841,13 @@ import Layout from '../layouts/Layout.astro';
 				node.style.opacity = '1';
 			}, 100);
 
-			// Show restart widget and action widgets if result node
+			// Show restart widget if result node
 			if (data.isResult) {
 				setTimeout(() => {
 					if (restartWidget) {
 						restartWidget.classList.remove('hidden');
 						setTimeout(() => {
 							restartWidget.style.opacity = '1';
-						}, 100);
-					}
-					if (actionWidgets) {
-						actionWidgets.classList.remove('hidden');
-						setTimeout(() => {
-							actionWidgets.style.opacity = '1';
 						}, 100);
 					}
 				}, 500);
@@ -1034,17 +1003,11 @@ import Layout from '../layouts/Layout.astro';
 
 		// Restart button click handler
 		restartBtn?.addEventListener('click', () => {
-			// Hide restart widget and action widgets
+			// Hide restart widget
 			if (restartWidget) {
 				restartWidget.style.opacity = '0';
 				setTimeout(() => {
 					restartWidget.classList.add('hidden');
-				}, 300);
-			}
-			if (actionWidgets) {
-				actionWidgets.style.opacity = '0';
-				setTimeout(() => {
-					actionWidgets.classList.add('hidden');
 				}, 300);
 			}
 
