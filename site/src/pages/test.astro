@@ -746,15 +746,17 @@ import Layout from '../layouts/Layout.astro';
 							</div>
 							<!-- Action buttons at bottom -->
 							<div class="flex gap-2 justify-center" style="margin-top: 0.5rem;">
-								<a href="https://www.beekorea.org/lms/login/" target="_blank" rel="noopener noreferrer"
-									class="px-3 py-1.5 rounded-lg text-white text-xs font-bold hover:scale-105 transition-all duration-200"
-									style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); font-family: 'Ongeullip Cocoa';">
-									로그인
+								<a href="https://www.beekorea.org/lms/accounts/signup/" target="_blank" rel="noopener noreferrer"
+									class="relative px-3 py-1.5 rounded-lg text-xs font-bold hover:scale-105 transition-all duration-200"
+									style="font-family: 'Ongeullip Cocoa';">
+									<span class="absolute inset-0 rounded-lg" style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); filter: url(#crayon-texture);"></span>
+									<span class="relative text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">회원가입</span>
 								</a>
 								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer"
-									class="px-3 py-1.5 rounded-lg text-white text-xs font-bold hover:scale-105 transition-all duration-200"
-									style="background: linear-gradient(135deg, #FF6B9D 0%, #E85A8B 100%); font-family: 'Ongeullip Cocoa';">
-									수강신청
+									class="relative px-3 py-1.5 rounded-lg text-xs font-bold hover:scale-105 transition-all duration-200"
+									style="font-family: 'Ongeullip Cocoa';">
+									<span class="absolute inset-0 rounded-lg" style="background: linear-gradient(135deg, #FF6B9D 0%, #E85A8B 100%); filter: url(#crayon-texture);"></span>
+									<span class="relative text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">수강신청</span>
 								</a>
 							</div>
 						</div>
