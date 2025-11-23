@@ -222,27 +222,23 @@ import Layout from '../layouts/Layout.astro';
 		#loading-screen,
 		#main-content,
 		#cover-screen {
-			position: relative;
 			background: #FBF5E8;
 		}
 
-		/* Apply subtle crayon texture on mobile only */
+		/* Apply subtle crayon texture on mobile only for main content */
 		@media (max-width: 767px) {
-			#loading-screen::before,
-			#main-content::before,
-			#cover-screen::before {
+			#main-content {
+				position: relative;
+				background: transparent;
+			}
+
+			#main-content::before {
 				content: '';
 				position: absolute;
 				inset: 0;
 				background: #FBF5E8;
 				filter: url(#crayon-bg);
 				z-index: -1;
-			}
-
-			#loading-screen,
-			#main-content,
-			#cover-screen {
-				background: transparent;
 			}
 		}
 
