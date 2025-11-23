@@ -304,12 +304,6 @@ import Layout from '../layouts/Layout.astro';
 			}
 		}
 
-		/* Book link - simple clickable style */
-		.book-link {
-			position: relative;
-			display: inline-block;
-		}
-
 		/* Touch feedback for buttons */
 		button {
 			position: relative;
@@ -743,7 +737,7 @@ import Layout from '../layouts/Layout.astro';
 						<!-- Text layer on top without filter - centered -->
 						<div class="absolute inset-0 flex flex-col items-center justify-center" style="padding: ${isMobile ? '0.75rem' : '1rem'};">
 							<div class="text-center mb-1">
-								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold book-link" style="font-family: 'Ongeullip Cocoa'; color: #42A5F5; font-size: ${isMobile ? '0.95rem' : '1.1rem'}; cursor: pointer; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px;">${data.book} 🔗</a>
+								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '0.95rem' : '1.1rem'}; cursor: pointer; text-decoration: none;">${data.book}</a>
 							</div>
 							<div class="text-center">
 								<p style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #8B7355; font-size: ${isMobile ? '0.75rem' : '0.85rem'}; white-space: pre-line;">${data.time}</p>
