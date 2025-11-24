@@ -228,7 +228,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		<!-- Scene 3: 겨울방학 특강 -->
 		<div class="scene relative w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-pink-50 via-yellow-50 to-orange-50 overflow-y-auto">
 		<!-- Decorative Books -->
-		<div class="book-emoji absolute top-6 text-4xl" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+		<div class="book-emoji absolute top-6 text-4xl hidden md:block" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
 			📖
 		</div>
 
@@ -424,6 +424,8 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		let currentScene = 0;
 		let isAnimating = false;
 		let dialogueStep = 0; // Current dialogue step in the scene
+		let autoPlayTimer = null; // Timer for auto-play
+		const AUTO_PLAY_DELAY = 1500; // 1.5 seconds between dialogues
 		const scenes = document.querySelectorAll('.scene');
 		const indicators = document.querySelectorAll('.scene-indicator');
 		const upBtn = document.getElementById('up-btn');
@@ -467,10 +469,18 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			if (isAnimating) return;
 			isAnimating = true;
 			dialogueStep = 0; // Reset dialogue step when changing scene
+
+			// Clear any existing auto-play timer
+			if (autoPlayTimer) {
+				clearTimeout(autoPlayTimer);
+				autoPlayTimer = null;
+			}
+
 			scenes.forEach((scene, i) => {
 				if (i === index) {
 					scene.classList.add('active');
-					// No auto-animations, will be triggered by clicks
+					// Start auto-play for this scene
+					scheduleNextDialogue();
 				} else {
 					scene.classList.remove('active');
 
@@ -595,8 +605,18 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			touchEndY = 0;
 		}
 
+		// Schedule next dialogue for auto-play
+		function scheduleNextDialogue() {
+			if (autoPlayTimer) {
+				clearTimeout(autoPlayTimer);
+			}
+			autoPlayTimer = setTimeout(() => {
+				advanceDialogue(true);
+			}, AUTO_PLAY_DELAY);
+		}
+
 		// Advance dialogue in current scene
-		function advanceDialogue() {
+		function advanceDialogue(isAutoPlay = false) {
 			const scene = scenes[currentScene];
 
 			if (currentScene === 0) {
@@ -614,8 +634,12 @@ const questionMark3 = `${base}/question-mark-3.png`;
 				if (dialogueStep < elements.length) {
 					elements[dialogueStep]();
 					dialogueStep++;
-				} else if (currentScene < scenes.length - 1) {
-					// All dialogues shown, go to next scene
+					// Schedule next dialogue if auto-playing
+					if (isAutoPlay) {
+						scheduleNextDialogue();
+					}
+				} else if (currentScene < scenes.length - 1 && !isAutoPlay) {
+					// All dialogues shown, go to next scene (only on manual click)
 					showScene(currentScene + 1);
 				}
 			} else if (currentScene === 1) {
@@ -631,13 +655,17 @@ const questionMark3 = `${base}/question-mark-3.png`;
 				if (dialogueStep < elements.length) {
 					elements[dialogueStep]();
 					dialogueStep++;
-				} else if (currentScene < scenes.length - 1) {
-					// All dialogues shown, go to next scene
+					// Schedule next dialogue if auto-playing
+					if (isAutoPlay) {
+						scheduleNextDialogue();
+					}
+				} else if (currentScene < scenes.length - 1 && !isAutoPlay) {
+					// All dialogues shown, go to next scene (only on manual click)
 					showScene(currentScene + 1);
 				}
 			} else if (currentScene === 2) {
-				// Scene 3 - go to next scene directly
-				if (currentScene < scenes.length - 1) {
+				// Scene 3 - go to next scene directly (only on manual click)
+				if (currentScene < scenes.length - 1 && !isAutoPlay) {
 					showScene(currentScene + 1);
 				}
 			}
