@@ -6,7 +6,17 @@ const playgroundDir = join('dist', 'playground');
 mkdirSync(playgroundDir, { recursive: true });
 
 // Copy image files to playground directory
-const images = ['peep-100.png', 'peep-102.png', 'peep-103.png', 'peep-18.png', 'peep-2.png', 'peep-73.png'];
+const images = [
+  'peep-100.png',
+  'peep-102.png',
+  'peep-103.png',
+  'peep-18.png',
+  'peep-2.png',
+  'peep-73.png',
+  'question-mark-1.png',
+  'question-mark-2.png',
+  'question-mark-3.png'
+];
 
 images.forEach(img => {
   try {
