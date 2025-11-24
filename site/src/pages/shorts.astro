@@ -530,15 +530,15 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		// Navigation button clicks
 		upBtn?.addEventListener('click', (e) => {
 			e.stopPropagation(); // Prevent triggering advanceDialogue
-			if (currentScene < scenes.length - 1 && !isAnimating) {
-				showScene(currentScene + 1);
+			if (currentScene > 0 && !isAnimating) {
+				showScene(currentScene - 1);
 			}
 		});
 
 		downBtn?.addEventListener('click', (e) => {
 			e.stopPropagation(); // Prevent triggering advanceDialogue
-			if (currentScene > 0 && !isAnimating) {
-				showScene(currentScene - 1);
+			if (currentScene < scenes.length - 1 && !isAnimating) {
+				showScene(currentScene + 1);
 			}
 		});
 
