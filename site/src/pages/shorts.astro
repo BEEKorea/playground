@@ -420,6 +420,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 	<script>
 		let currentScene = 0;
 		let isAnimating = false;
+		let isDialoguePlaying = false; // New flag to track dialogue playback
 		let dialogueStep = 0; // Current dialogue step in the scene
 		let autoPlayTimer = null; // Timer for auto-play
 		const AUTO_PLAY_DELAY = 1000; // 1 second between dialogues
@@ -470,6 +471,12 @@ const questionMark3 = `${base}/question-mark-3.png`;
 				return;
 			}
 
+			// Prevent scene change during dialogue playback
+			if (isDialoguePlaying) {
+				console.log('Dialogue is playing, ignoring scene change');
+				return;
+			}
+
 			// Validate scene index
 			if (index < 0 || index >= scenes.length) {
 				console.error('Invalid scene index:', index);
@@ -481,6 +488,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			console.log(`Transitioning from scene ${currentScene} to scene ${index}`);
 
 			dialogueStep = 0; // Reset dialogue step when changing scene
+			isDialoguePlaying = false; // Reset dialogue playing flag
 
 			// Clear any existing auto-play timer
 			if (autoPlayTimer) {
@@ -548,26 +556,26 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		// Navigation button clicks
 		upBtn?.addEventListener('click', (e) => {
 			e.stopPropagation(); // Prevent triggering advanceDialogue
-			if (currentScene < scenes.length - 1 && !isAnimating) {
-				console.log(`Up button: ${currentScene} → ${currentScene + 1}`);
-				showScene(currentScene + 1);
+			if (currentScene > 0 && !isAnimating) {
+				console.log(`Up button: ${currentScene} → ${currentScene - 1}`);
+				showScene(currentScene - 1);
 			}
 		});
 
 		downBtn?.addEventListener('click', (e) => {
 			e.stopPropagation(); // Prevent triggering advanceDialogue
-			if (currentScene > 0 && !isAnimating) {
-				console.log(`Down button: ${currentScene} → ${currentScene - 1}`);
-				showScene(currentScene - 1);
+			if (currentScene < scenes.length - 1 && !isAnimating) {
+				console.log(`Down button: ${currentScene} → ${currentScene + 1}`);
+				showScene(currentScene + 1);
 			}
 		});
 
 		// Keyboard navigation (Arrow Up/Down for vertical shorts style)
 		document.addEventListener('keydown', (e) => {
-			if (e.key === 'ArrowUp' && currentScene < scenes.length - 1) {
-				showScene(currentScene + 1);
-			} else if (e.key === 'ArrowDown' && currentScene > 0) {
+			if (e.key === 'ArrowUp' && currentScene > 0) {
 				showScene(currentScene - 1);
+			} else if (e.key === 'ArrowDown' && currentScene < scenes.length - 1) {
+				showScene(currentScene + 1);
 			}
 		});
 
@@ -632,6 +640,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			if (autoPlayTimer) {
 				clearTimeout(autoPlayTimer);
 			}
+			isDialoguePlaying = true; // Set flag when dialogue is scheduled
 			autoPlayTimer = setTimeout(() => {
 				advanceDialogue(true);
 			}, AUTO_PLAY_DELAY);
@@ -663,6 +672,9 @@ const questionMark3 = `${base}/question-mark-3.png`;
 					if (isAutoPlay) {
 						scheduleNextDialogue();
 					}
+				} else {
+					// All dialogues finished
+					isDialoguePlaying = false;
 				}
 				// Don't auto-advance to next scene on click
 			} else if (currentScene === 1) {
@@ -682,10 +694,15 @@ const questionMark3 = `${base}/question-mark-3.png`;
 					if (isAutoPlay) {
 						scheduleNextDialogue();
 					}
+				} else {
+					// All dialogues finished
+					isDialoguePlaying = false;
 				}
 				// Don't auto-advance to next scene on click
+			} else {
+				// Scene 3 has no dialogues
+				isDialoguePlaying = false;
 			}
-			// Scene 3 has no dialogues, clicking does nothing
 		}
 
 		// Click/tap to advance dialogue
