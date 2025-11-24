@@ -779,18 +779,18 @@ import Layout from '../layouts/Layout.astro';
 								</div>
 							</div>
 							<!-- Action buttons at bottom -->
-							<div class="flex gap-2 justify-center" style="margin-top: 0.5rem;">
+							<div class="flex gap-2 justify-center items-center" style="margin-top: 0.5rem;">
 								<a href="https://www.beekorea.org/lms/accounts/signup/" target="_blank" rel="noopener noreferrer"
-									class="relative px-3 py-1.5 rounded-lg text-xs font-bold hover:scale-105 transition-all duration-200"
-									style="font-family: 'Ongeullip Cocoa';">
+									class="relative rounded-lg font-bold hover:scale-105 transition-all duration-200 flex-1 min-w-0"
+									style="font-family: 'Ongeullip Cocoa'; padding: ${isMobile ? '0.375rem 0.5rem' : '0.5rem 0.75rem'}; font-size: ${isMobile ? '0.7rem' : '0.75rem'};">
 									<span class="absolute inset-0 rounded-lg" style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); filter: url(#crayon-texture);"></span>
-									<span class="relative text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">회원가입</span>
+									<span class="relative text-white text-center block" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">회원가입</span>
 								</a>
 								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer"
-									class="relative px-3 py-1.5 rounded-lg text-xs font-bold hover:scale-105 transition-all duration-200"
-									style="font-family: 'Ongeullip Cocoa';">
+									class="relative rounded-lg font-bold hover:scale-105 transition-all duration-200 flex-1 min-w-0"
+									style="font-family: 'Ongeullip Cocoa'; padding: ${isMobile ? '0.375rem 0.5rem' : '0.5rem 0.75rem'}; font-size: ${isMobile ? '0.7rem' : '0.75rem'};">
 									<span class="absolute inset-0 rounded-lg" style="background: linear-gradient(135deg, #FF6B9D 0%, #E85A8B 100%); filter: url(#crayon-texture);"></span>
-									<span class="relative text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">수강신청</span>
+									<span class="relative text-white text-center block" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">수강신청</span>
 								</a>
 							</div>
 						</div>
@@ -801,9 +801,9 @@ import Layout from '../layouts/Layout.astro';
 				const isMobile = window.innerWidth < 768;
 				const nodeSize = isMobile ? '9rem' : '10rem'; // 144px vs 160px
 				const textSize = isMobile ? '0.8rem' : '0.875rem';
-				const buttonWidth = isMobile ? '65px' : '75px'; // 고정 너비로 통일
-				const buttonHeight = isMobile ? '36px' : '40px'; // 고정 높이 추가
-				const buttonPadding = isMobile ? 'padding: 0.6rem 0;' : 'padding: 0.75rem 0;'; // 좌우 패딩 제거
+				const buttonWidth = isMobile ? '70px' : '80px'; // 더 여유있는 너비
+				const buttonHeight = isMobile ? '38px' : '42px'; // 더 여유있는 높이
+				const buttonFontSize = isMobile ? '0.85rem' : '0.9rem'; // 폰트 크기 통일
 
 				const showBackButton = selectedPath.length > 1; // Show back button if not first node
 				const yesLabel = data.yesLabel || 'YES';
@@ -818,16 +818,16 @@ import Layout from '../layouts/Layout.astro';
 						<div class="rounded-full flex items-center justify-center relative" style="width: ${nodeSize}; height: ${nodeSize}; padding: ${isMobile ? '0.75rem' : '1rem'};">
 							<h3 class="text-center whitespace-pre-line leading-tight" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #5D4E37; font-size: ${textSize};">${displayText}</h3>
 						</div>
-						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: ${isMobile ? '-3.5rem' : '-4rem'}; z-index: 100; align-items: flex-start;">
+						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: ${isMobile ? '-3.5rem' : '-4rem'}; z-index: 100; align-items: center; justify-content: center;">
 							<button
 								class="yes-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
-								style="background: #42A5F5; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${isMobile ? '0.8rem' : '0.875rem'}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0; margin-top: ${isMobile ? '2px' : '0'};"
+								style="background: #42A5F5; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${buttonFontSize}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0;"
 								data-node="${id}"
 								data-next="${data.yes}"
 							><span style="filter: url(#crayon-text); pointer-events: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">${yesLabel}</span></button>
 							<button
 								class="no-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
-								style="background: #F06292; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${isMobile ? '0.8rem' : '0.875rem'}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0;"
+								style="background: #F06292; font-family: 'Ongeullip Cocoa'; color: white; filter: url(#crayon-texture); pointer-events: auto; cursor: pointer; position: relative; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; font-size: ${buttonFontSize}; padding: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0;"
 								data-node="${id}"
 								data-next="${data.no}"
 							><span style="filter: url(#crayon-text); pointer-events: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">${noLabel}</span></button>
