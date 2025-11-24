@@ -550,14 +550,14 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 		// Navigation button clicks
 		upBtn?.addEventListener('click', () => {
-			if (currentScene > 0 && !isAnimating) {
-				showScene(currentScene - 1);
+			if (currentScene < scenes.length - 1 && !isAnimating) {
+				showScene(currentScene + 1);
 			}
 		});
 
 		downBtn?.addEventListener('click', () => {
-			if (currentScene < scenes.length - 1 && !isAnimating) {
-				showScene(currentScene + 1);
+			if (currentScene > 0 && !isAnimating) {
+				showScene(currentScene - 1);
 			}
 		});
 
