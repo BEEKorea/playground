@@ -1,3 +1,12 @@
+================================================================
+BEE 겨울방학 특강 - 갈라디아서 단과반 쇼츠 페이지
+전체 소스 코드
+================================================================
+
+파일명: src/pages/shorts.astro
+
+================================================================
+
 ---
 import Layout from '../layouts/Layout.astro';
 
@@ -424,7 +433,6 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		let dialogueStep = 0; // Current dialogue step in the scene
 		let autoPlayTimer = null; // Timer for auto-play
 		const AUTO_PLAY_DELAY = 1000; // 1 second between dialogues
-		const SCENE_TRANSITION_DURATION = 600; // Match CSS transition duration + buffer
 		const scenes = document.querySelectorAll('.scene');
 		const indicators = document.querySelectorAll('.scene-indicator');
 		const upBtn = document.getElementById('up-btn');
@@ -465,22 +473,8 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		}
 
 		function showScene(index) {
-			// Prevent multiple simultaneous transitions
-			if (isAnimating) {
-				console.log('Animation in progress, ignoring scene change');
-				return;
-			}
-
-			// Validate scene index
-			if (index < 0 || index >= scenes.length) {
-				console.error('Invalid scene index:', index);
-				return;
-			}
-
-			// Lock animations
+			if (isAnimating) return;
 			isAnimating = true;
-			console.log(`Transitioning from scene ${currentScene} to scene ${index}`);
-
 			dialogueStep = 0; // Reset dialogue step when changing scene
 
 			// Clear any existing auto-play timer
@@ -492,10 +486,8 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			scenes.forEach((scene, i) => {
 				if (i === index) {
 					scene.classList.add('active');
-					// Start auto-play for this scene after transition completes
-					setTimeout(() => {
-						scheduleNextDialogue();
-					}, 100);
+					// Start auto-play for this scene
+					scheduleNextDialogue();
 				} else {
 					scene.classList.remove('active');
 
@@ -533,17 +525,13 @@ const questionMark3 = `${base}/question-mark-3.png`;
 					}
 				}
 			});
-
-			// Update currentScene AFTER DOM changes
 			currentScene = index;
 			updateNavButtons();
 			updateIndicators();
 
-			// Unlock after transition completes (CSS transition is 0.5s)
 			setTimeout(() => {
 				isAnimating = false;
-				console.log(`Scene ${index} transition complete`);
-			}, SCENE_TRANSITION_DURATION);
+			}, 300);
 		}
 
 		// Navigation button clicks
@@ -968,3 +956,60 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		100% { background-position: -200% 0; }
 	}
 </style>
+
+================================================================
+주요 기능
+================================================================
+
+1. 3개의 씬(Scene)으로 구성된 세로 스크롤 쇼츠 형태
+   - 씬1: 흔들리는 갈라디아교회
+   - 씬2: 흔들리는 당신은?
+   - 씬3: 겨울방학 특강 정보
+
+2. 대화 자동 재생
+   - 1초 간격으로 대화가 자동으로 나타남
+   - 클릭/터치로도 대화 진행 가능
+
+3. 물음표 애니메이션
+   - 씬1에서 대화 후 물음표 3개가 150ms 간격으로 순차 등장
+
+4. 흔들림 효과
+   - 씬1: 교회 아이콘 흔들림
+   - 씬2: 양 아이콘 흔들림
+
+5. 네비게이션
+   - 위/아래 화살표 버튼
+   - 스와이프 제스처
+   - 마우스 휠 (PC)
+   - 키보드 화살표 키
+
+6. 공유 기능
+   - Web Share API 지원
+   - 클립보드 복사 대체 기능
+
+7. 반응형 디자인
+   - 모바일 우선 디자인
+   - 데스크톱에서는 쇼츠 스타일 컨테이너
+
+================================================================
+필요한 이미지 파일
+================================================================
+
+- peep-100.png (캐릭터 B)
+- peep-102.png (캐릭터 A)
+- peep-18.png (캐릭터 A2)
+- peep-73.png (캐릭터 B2)
+- peep-2.png (하단 아이콘)
+- question-mark-1.png (물음표 1)
+- question-mark-2.png (물음표 2)
+- question-mark-3.png (물음표 3)
+- shorts-preview.png (OG 미리보기 이미지)
+
+================================================================
+사용된 폰트
+================================================================
+
+- Ongeullip Cocoa (온글잎 코코아체): 제목 및 주요 텍스트
+- Pretendard: 상세 정보 텍스트
+
+================================================================

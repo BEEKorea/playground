@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEE 쇼츠 페이지 - 전체 코드</title>
+    <style>
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #252526;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 2px solid #4ec9b0;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            color: #dcdcaa;
+            margin-top: 30px;
+            border-left: 4px solid #dcdcaa;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #569cd6;
+            margin-top: 20px;
+        }
+        pre {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 3px solid #007acc;
+        }
+        code {
+            color: #ce9178;
+            font-size: 14px;
+        }
+        .tag {
+            color: #569cd6;
+        }
+        .attr {
+            color: #9cdcfe;
+        }
+        .string {
+            color: #ce9178;
+        }
+        .comment {
+            color: #6a9955;
+        }
+        .keyword {
+            color: #c586c0;
+        }
+        .function {
+            color: #dcdcaa;
+        }
+        .info-box {
+            background: #2d2d30;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #4ec9b0;
+        }
+        .file-list {
+            background: #2d2d30;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .file-list li {
+            color: #9cdcfe;
+            margin: 5px 0;
+        }
+        button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 10px 5px 10px 0;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        .copy-notice {
+            color: #4ec9b0;
+            font-size: 12px;
+            display: none;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 BEE 겨울방학 특강 - 갈라디아서 단과반 쇼츠 페이지</h1>
+        <p style="color: #9cdcfe;">전체 소스 코드</p>
+
+        <div class="info-box">
+            <h3>💡 파일 정보</h3>
+            <p><strong>파일명:</strong> src/pages/shorts.astro</p>
+            <p><strong>프레임워크:</strong> Astro</p>
+            <p><strong>작성일:</strong> 2025년 11월 24일</p>
+        </div>
+
+        <button onclick="copyCode()">📋 전체 코드 복사</button>
+        <span class="copy-notice" id="copyNotice">✓ 복사되었습니다!</span>
+
+        <h2>📄 전체 소스 코드</h2>
+        <pre id="sourceCode"><code>---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const peep100 = `${base}/peep-100.png`;
+const peep102 = `${base}/peep-102.png`;
+const peep18 = `${base}/peep-18.png`;
+const peep73 = `${base}/peep-73.png`;
+const peep2 = `${base}/peep-2.png`;
+const questionMark1 = `${base}/question-mark-1.png`;
+const questionMark2 = `${base}/question-mark-2.png`;
+const questionMark3 = `${base}/question-mark-3.png`;
+---
+
+&lt;Layout
+	title="흔들리는 갈라디아교회, 흔들리는 당신은? | BEE 겨울방학 특강"
+	description="갈라디아서 단과반에서 함께 고민하고 답을 찾아보세요!"
+	image="/shorts-preview.png"
+&gt;
+	&lt;!-- SVG Avatar Definitions --&gt;
+	&lt;svg style="display: none;"&gt;
+		&lt;defs&gt;
+			&lt;!-- Avatar A - Suspicious (의심스러운) --&gt;
+			&lt;symbol id="avatar-a-suspicious" viewBox="0 0 32 32"&gt;
+				&lt;circle cx="16" cy="16" r="16" fill="#FFB6C1"/&gt;
+				&lt;circle cx="16" cy="15" r="10" fill="#FFF5E1"/&gt;
+				&lt;path d="M 8 12 Q 8 6, 16 6 Q 24 6, 24 12 L 24 15 Q 24 10, 16 10 Q 8 10, 8 15 Z" fill="#5D4E37"/&gt;
+				&lt;path d="M 10 12 Q 12 11, 14 12" stroke="#5D4E37" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 18 12 Q 20 11, 22 12" stroke="#5D4E37" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;circle cx="12" cy="14" r="1.3" fill="#2C1810"/&gt;
+				&lt;circle cx="20" cy="14" r="1.3" fill="#2C1810"/&gt;
+				&lt;path d="M 12 18 Q 14 17, 16 17" stroke="#FF8BA0" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+			&lt;/symbol&gt;
+
+			&lt;!-- Avatar A - Confident (자신있는) --&gt;
+			&lt;symbol id="avatar-a-confident" viewBox="0 0 32 32"&gt;
+				&lt;circle cx="16" cy="16" r="16" fill="#FFB6C1"/&gt;
+				&lt;circle cx="16" cy="15" r="10" fill="#FFF5E1"/&gt;
+				&lt;path d="M 8 12 Q 8 6, 16 6 Q 24 6, 24 12 L 24 15 Q 24 10, 16 10 Q 8 10, 8 15 Z" fill="#5D4E37"/&gt;
+				&lt;path d="M 10 13 Q 12 12, 14 13" stroke="#5D4E37" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 18 13 Q 20 12, 22 13" stroke="#5D4E37" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;circle cx="12" cy="14.5" r="1.5" fill="#2C1810"/&gt;
+				&lt;circle cx="20" cy="14.5" r="1.5" fill="#2C1810"/&gt;
+				&lt;circle cx="11" cy="14" r="0.5" fill="white"/&gt;
+				&lt;circle cx="19" cy="14" r="0.5" fill="white"/&gt;
+				&lt;path d="M 11 17 Q 16 20, 21 17" stroke="#FF8BA0" stroke-width="1.2" fill="none" stroke-linecap="round"/&gt;
+				&lt;circle cx="10" cy="18" r="1.5" fill="#FFB6C1" opacity="0.5"/&gt;
+				&lt;circle cx="22" cy="18" r="1.5" fill="#FFB6C1" opacity="0.5"/&gt;
+			&lt;/symbol&gt;
+
+			&lt;!-- Avatar B - Happy (기쁜) --&gt;
+			&lt;symbol id="avatar-b-happy" viewBox="0 0 32 32"&gt;
+				&lt;circle cx="16" cy="16" r="16" fill="#6FDBDB"/&gt;
+				&lt;circle cx="16" cy="15" r="10" fill="#FFF5E1"/&gt;
+				&lt;path d="M 8 12 Q 8 5, 16 5 Q 24 5, 24 12 L 23 14 Q 23 8, 16 8 Q 9 8, 9 14 Z" fill="#2C1810"/&gt;
+				&lt;path d="M 10 12 Q 12 11, 14 12" stroke="#2C1810" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 18 12 Q 20 11, 22 12" stroke="#2C1810" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 10 14 Q 12 12.5, 14 14" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 18 14 Q 20 12.5, 22 14" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 11 17 Q 16 20, 21 17" stroke="#4FB3B3" stroke-width="1.2" fill="none" stroke-linecap="round"/&gt;
+				&lt;circle cx="10" cy="18" r="1.5" fill="#6FDBDB" opacity="0.5"/&gt;
+				&lt;circle cx="22" cy="18" r="1.5" fill="#6FDBDB" opacity="0.5"/&gt;
+			&lt;/symbol&gt;
+
+			&lt;!-- Avatar B - Confused (혼란스러운) --&gt;
+			&lt;symbol id="avatar-b-confused" viewBox="0 0 32 32"&gt;
+				&lt;circle cx="16" cy="16" r="16" fill="#6FDBDB"/&gt;
+				&lt;circle cx="16" cy="15" r="10" fill="#FFF5E1"/&gt;
+				&lt;path d="M 8 12 Q 8 5, 16 5 Q 24 5, 24 12 L 23 14 Q 23 8, 16 8 Q 9 8, 9 14 Z" fill="#2C1810"/&gt;
+				&lt;path d="M 10 12 Q 12 13, 14 12" stroke="#2C1810" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 18 12 Q 20 13, 22 12" stroke="#2C1810" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;circle cx="12" cy="14.5" r="1.8" fill="#2C1810"/&gt;
+				&lt;circle cx="20" cy="14.5" r="1.8" fill="#2C1810"/&gt;
+				&lt;circle cx="11.5" cy="14" r="0.6" fill="white"/&gt;
+				&lt;circle cx="19.5" cy="14" r="0.6" fill="white"/&gt;
+				&lt;path d="M 13 18.5 Q 16 17, 19 18.5" stroke="#4FB3B3" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+			&lt;/symbol&gt;
+
+			&lt;!-- Avatar B - Shocked (놀란) --&gt;
+			&lt;symbol id="avatar-b-shocked" viewBox="0 0 32 32"&gt;
+				&lt;circle cx="16" cy="16" r="16" fill="#6FDBDB"/&gt;
+				&lt;circle cx="16" cy="15" r="10" fill="#FFF5E1"/&gt;
+				&lt;path d="M 8 12 Q 8 5, 16 5 Q 24 5, 24 12 L 23 14 Q 23 8, 16 8 Q 9 8, 9 14 Z" fill="#2C1810"/&gt;
+				&lt;path d="M 10 11 Q 12 10, 14 11" stroke="#2C1810" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;path d="M 18 11 Q 20 10, 22 11" stroke="#2C1810" stroke-width="1" fill="none" stroke-linecap="round"/&gt;
+				&lt;circle cx="12" cy="14" r="2" fill="#2C1810"/&gt;
+				&lt;circle cx="20" cy="14" r="2" fill="#2C1810"/&gt;
+				&lt;circle cx="11.3" cy="13.3" r="0.7" fill="white"/&gt;
+				&lt;circle cx="19.3" cy="13.3" r="0.7" fill="white"/&gt;
+				&lt;circle cx="16" cy="18.5" r="1.5" fill="none" stroke="#4FB3B3" stroke-width="1"/&gt;
+			&lt;/symbol&gt;
+		&lt;/defs&gt;
+	&lt;/svg&gt;
+
+	&lt;div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-cyan-50 via-purple-50 to-yellow-50 p-0 md:p-4"&gt;
+		&lt;div class="relative w-full h-screen md:max-w-[390px] md:h-[844px] bg-gradient-to-br from-cyan-50 via-purple-50 to-yellow-50 rounded-2xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-2xl"&gt;
+			&lt;div id="scenes-container" class="relative w-full h-full overflow-hidden"&gt;
+
+		&lt;!-- Scene 1: 흔들리는 갈라디아교회 --&gt;
+		&lt;div class="scene active relative w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50"&gt;
+			&lt;div class="scene1-title absolute top-12 text-center"&gt;
+				&lt;h1 class="text-gray-600 text-3xl mb-2" style="font-family: 'Ongeullip Cocoa'; text-shadow: 0 2px 4px rgba(0,0,0,0.1);"&gt;흔들리는&lt;/h1&gt;
+				&lt;h2 class="text-5xl" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #FF9D42; text-shadow: 0 3px 6px rgba(255,157,66,0.3);"&gt;갈라디아교회&lt;/h2&gt;
+			&lt;/div&gt;
+
+			&lt;div class="scene1-church text-8xl mb-8 mt-8" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));"&gt;
+				⛪
+			&lt;/div&gt;
+
+			&lt;div class="space-y-4 w-full max-w-sm"&gt;
+				&lt;div class="dialogue1 flex items-start gap-2 opacity-0"&gt;
+					&lt;img src={peep102} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;그 사람이 말한 걸 그대로 믿는다고?&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="dialogue2 flex items-start gap-2 flex-row-reverse opacity-0"&gt;
+					&lt;img src={peep100} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;바울 선생님이 우리는 믿음으로&lt;br&gt;구원받는다고 했어&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="dialogue3 flex items-start gap-2 opacity-0"&gt;
+					&lt;img src={peep102} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;여기 봐봐. 율법을 지켜야 한다니까?&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="dialogue4 flex items-start gap-2 flex-row-reverse opacity-0"&gt;
+					&lt;img src={peep100} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;뭐가 맞는걸까?&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+
+			&lt;div class="scene1-question1 absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(calc(-50% - 45px), 0) rotate(-15deg) !important;"&gt;
+				&lt;img src={questionMark3} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" /&gt;
+			&lt;/div&gt;
+			&lt;div class="scene1-question2 absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(-50%, 0) !important;"&gt;
+				&lt;img src={questionMark2} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" /&gt;
+			&lt;/div&gt;
+			&lt;div class="scene1-question3 absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(calc(-50% + 45px), 0) rotate(-15deg) !important;"&gt;
+				&lt;img src={questionMark1} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;!-- Scene 2: 흔들리는 당신은? --&gt;
+		&lt;div class="scene relative w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-purple-50 via-cyan-50 to-blue-50"&gt;
+			&lt;div class="scene2-title absolute top-12 text-center"&gt;
+				&lt;h1 class="text-gray-600 text-3xl mb-2" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.1);"&gt;흔들리는&lt;/h1&gt;
+				&lt;h2 class="text-5xl" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #B794F6; text-shadow: 0 3px 6px rgba(183,148,246,0.3);"&gt;당신은?&lt;/h2&gt;
+			&lt;/div&gt;
+
+			&lt;div class="scene2-sheep text-9xl mb-8 mt-4" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));"&gt;
+				🐑
+			&lt;/div&gt;
+
+			&lt;div class="space-y-4 w-full max-w-sm"&gt;
+				&lt;div class="dialogue1-s2 flex items-start gap-2 opacity-0"&gt;
+					&lt;img src={peep18} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;드디어 교회 등록했구나!&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="dialogue2-s2 flex items-start gap-2 flex-row-reverse opacity-0"&gt;
+					&lt;img src={peep73} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;응! 이제 완벽한 크리스천😊&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="dialogue3-s2 flex items-start gap-2 opacity-0"&gt;
+					&lt;img src={peep18} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;에이~ 헌금, 팀모임, 봉사는?&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="dialogue4-s2 flex items-start gap-2 flex-row-reverse opacity-0"&gt;
+					&lt;img src={peep73} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" /&gt;
+					&lt;div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;"&gt;
+						&lt;p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;"&gt;헐... 믿음만으로는 안 돼...?&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+
+			&lt;div class="scene2-icons absolute bottom-16 opacity-0"&gt;
+				&lt;img src={peep2} alt="캐릭터" class="w-16 md:w-20" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));" /&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;!-- Scene 3: 겨울방학 특강 --&gt;
+		&lt;div class="scene relative w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-pink-50 via-yellow-50 to-orange-50 overflow-y-auto"&gt;
+		&lt;div class="book-emoji absolute top-6 text-4xl hidden md:block" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));"&gt;
+			📖
+		&lt;/div&gt;
+
+		&lt;div class="title-section text-center mb-6 -mt-16"&gt;
+			&lt;h1 class="text-gray-600 text-2xl mb-3" style="font-family: 'Ongeullip Cocoa'; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.05);"&gt;
+				겨울방학 특강
+			&lt;/h1&gt;
+			&lt;div class="course-badge bg-white rounded-3xl px-8 pt-4 pb-3 shadow-2xl"&gt;
+				&lt;h2 class="text-4xl mb-0.5" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; background: linear-gradient(135deg, #FF9D42 0%, #FFB6C1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"&gt;
+					갈라디아서
+				&lt;/h2&gt;
+				&lt;p class="text-lg" style="font-family: 'Ongeullip Cocoa'; font-weight: 400; color: #B794F6;"&gt;단과반&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;!-- ... (씬3 나머지 코드는 동일) ... --&gt;
+
+		&lt;/div&gt;
+
+		&lt;!-- Navigation Buttons --&gt;
+		&lt;button id="up-btn" class="absolute right-4 top-1/4 -translate-y-1/2 nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20 hidden"&gt;
+			&lt;svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));"&gt;
+				&lt;polyline points="18 15 12 9 6 15"&gt;&lt;/polyline&gt;
+			&lt;/svg&gt;
+		&lt;/button&gt;
+		&lt;button id="down-btn" class="absolute right-4 top-3/4 -translate-y-1/2 nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20"&gt;
+			&lt;svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));"&gt;
+				&lt;polyline points="6 9 12 15 18 9"&gt;&lt;/polyline&gt;
+			&lt;/svg&gt;
+		&lt;/button&gt;
+
+		&lt;button id="share-btn" class="absolute right-4 bottom-20 w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20"&gt;
+			&lt;svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));"&gt;
+				&lt;path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"&gt;&lt;/path&gt;
+				&lt;polyline points="16 6 12 2 8 6"&gt;&lt;/polyline&gt;
+				&lt;line x1="12" y1="2" x2="12" y2="15"&gt;&lt;/line&gt;
+			&lt;/svg&gt;
+		&lt;/button&gt;
+
+		&lt;div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20"&gt;
+			&lt;div class="scene-indicator h-1 rounded-full w-8 bg-white transition-all"&gt;&lt;/div&gt;
+			&lt;div class="scene-indicator h-1 rounded-full w-1 bg-white/40 transition-all"&gt;&lt;/div&gt;
+			&lt;div class="scene-indicator h-1 rounded-full w-1 bg-white/40 transition-all"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;script&gt;
+		// JavaScript 코드 (950줄)
+		// 전체 코드는 텍스트 파일 참조
+	&lt;/script&gt;
+&lt;/Layout&gt;
+
+&lt;style&gt;
+	/* CSS 코드 */
+	/* 전체 스타일은 텍스트 파일 참조 */
+&lt;/style&gt;</code></pre>
+
+        <h2>✨ 주요 기능</h2>
+        <div class="file-list">
+            <h3>🎬 3개의 씬(Scene) 구조</h3>
+            <ul>
+                <li>씬1: 흔들리는 갈라디아교회</li>
+                <li>씬2: 흔들리는 당신은?</li>
+                <li>씬3: 겨울방학 특강 정보</li>
+            </ul>
+        </div>
+
+        <div class="file-list">
+            <h3>⚡ 인터랙션</h3>
+            <ul>
+                <li>대화 자동 재생 (1초 간격)</li>
+                <li>클릭/터치로 대화 수동 진행</li>
+                <li>물음표 150ms 간격 순차 등장</li>
+                <li>교회/양 아이콘 흔들림 애니메이션</li>
+            </ul>
+        </div>
+
+        <div class="file-list">
+            <h3>🎮 네비게이션</h3>
+            <ul>
+                <li>위/아래 화살표 버튼</li>
+                <li>스와이프 제스처 (모바일)</li>
+                <li>마우스 휠 (데스크톱)</li>
+                <li>키보드 화살표 키</li>
+                <li>공유 기능 (Web Share API)</li>
+            </ul>
+        </div>
+
+        <h2>🖼️ 필요한 이미지 파일</h2>
+        <div class="file-list">
+            <ul>
+                <li>peep-100.png (캐릭터 B)</li>
+                <li>peep-102.png (캐릭터 A)</li>
+                <li>peep-18.png (캐릭터 A2)</li>
+                <li>peep-73.png (캐릭터 B2)</li>
+                <li>peep-2.png (하단 아이콘)</li>
+                <li>question-mark-1.png</li>
+                <li>question-mark-2.png</li>
+                <li>question-mark-3.png</li>
+                <li>shorts-preview.png (OG 미리보기)</li>
+            </ul>
+        </div>
+
+        <h2>🎨 사용된 폰트</h2>
+        <div class="file-list">
+            <ul>
+                <li><strong>Ongeullip Cocoa</strong> (온글잎 코코아체): 제목 및 주요 텍스트</li>
+                <li><strong>Pretendard</strong>: 상세 정보 텍스트</li>
+            </ul>
+        </div>
+
+        <div class="info-box" style="margin-top: 30px;">
+            <h3>💾 파일 위치</h3>
+            <p>Windows 탐색기 경로:</p>
+            <code style="display: block; background: #1e1e1e; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                \\wsl$\Ubuntu\home\nyunc\playground\site\
+            </code>
+            <p style="margin-top: 15px;">파일명:</p>
+            <ul>
+                <li>shorts-page-code.txt (텍스트 버전)</li>
+                <li>shorts-page-code.html (HTML 버전)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('sourceCode').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const notice = document.getElementById('copyNotice');
+                notice.style.display = 'inline';
+                setTimeout(() => {
+                    notice.style.display = 'none';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
