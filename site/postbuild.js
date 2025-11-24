@@ -15,7 +15,8 @@ const images = [
   'peep-73.png',
   'question-mark-1.png',
   'question-mark-2.png',
-  'question-mark-3.png'
+  'question-mark-3.png',
+  'shorts-preview.png'
 ];
 
 images.forEach(img => {
