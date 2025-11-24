@@ -387,17 +387,6 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		</div>
 		</div>
 
-		<!-- Navigation Buttons (moved outside scenes-container for higher z-index) -->
-		<button id="up-btn" class="absolute right-4 top-1/4 -translate-y-1/2 nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-50 hidden">
-			<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-				<polyline points="18 15 12 9 6 15"></polyline>
-			</svg>
-		</button>
-		<button id="down-btn" class="absolute right-4 top-3/4 -translate-y-1/2 nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-50">
-			<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-				<polyline points="6 9 12 15 18 9"></polyline>
-			</svg>
-		</button>
 
 		<!-- Share Button (moved outside scenes-container) -->
 		<button id="share-btn" class="absolute right-4 bottom-20 w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-50">
@@ -427,30 +416,6 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		const SCENE_TRANSITION_DURATION = 600; // Match CSS transition duration + buffer
 		const scenes = document.querySelectorAll('.scene');
 		const indicators = document.querySelectorAll('.scene-indicator');
-		const upBtn = document.getElementById('up-btn');
-		const downBtn = document.getElementById('down-btn');
-		const swipeHint = document.getElementById('swipe-hint');
-
-		function updateNavButtons() {
-			// Up button: show when not on first scene (goes to previous)
-			if (currentScene > 0) {
-				upBtn?.classList.remove('hidden');
-			} else {
-				upBtn?.classList.add('hidden');
-			}
-
-			// Down button: show when not on last scene (goes to next)
-			if (currentScene < scenes.length - 1) {
-				downBtn?.classList.remove('hidden');
-			} else {
-				downBtn?.classList.add('hidden');
-			}
-
-			// Hide swipe hint after first interaction
-			if (currentScene > 0) {
-				swipeHint?.classList.add('hidden');
-			}
-		}
 
 		function updateIndicators() {
 			indicators.forEach((indicator, i) => {
@@ -543,7 +508,6 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 			// Update currentScene AFTER DOM changes
 			currentScene = index;
-			updateNavButtons();
 			updateIndicators();
 
 			// Unlock after transition completes (CSS transition is 0.5s)
@@ -552,23 +516,6 @@ const questionMark3 = `${base}/question-mark-3.png`;
 				console.log(`Scene ${index} transition complete`);
 			}, SCENE_TRANSITION_DURATION);
 		}
-
-		// Navigation button clicks
-		upBtn?.addEventListener('click', (e) => {
-			e.stopPropagation(); // Prevent triggering advanceDialogue
-			if (currentScene > 0 && !isAnimating) {
-				console.log(`Up button: ${currentScene} → ${currentScene - 1}`);
-				showScene(currentScene - 1);
-			}
-		});
-
-		downBtn?.addEventListener('click', (e) => {
-			e.stopPropagation(); // Prevent triggering advanceDialogue
-			if (currentScene < scenes.length - 1 && !isAnimating) {
-				console.log(`Down button: ${currentScene} → ${currentScene + 1}`);
-				showScene(currentScene + 1);
-			}
-		});
 
 		// Keyboard navigation (Arrow Up/Down for vertical shorts style)
 		document.addEventListener('keydown', (e) => {
