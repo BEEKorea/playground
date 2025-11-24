@@ -423,6 +423,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 	<script>
 		let currentScene = 0;
 		let isAnimating = false;
+		let dialogueStep = 0; // Current dialogue step in the scene
 		const scenes = document.querySelectorAll('.scene');
 		const indicators = document.querySelectorAll('.scene-indicator');
 		const upBtn = document.getElementById('up-btn');
@@ -465,52 +466,11 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		function showScene(index) {
 			if (isAnimating) return;
 			isAnimating = true;
+			dialogueStep = 0; // Reset dialogue step when changing scene
 			scenes.forEach((scene, i) => {
 				if (i === index) {
 					scene.classList.add('active');
-
-					// Trigger animations for the active scene
-					if (i === 0) {
-						// Scene 1 animations - faster timing for better flow
-						setTimeout(() => {
-							scene.querySelector('.dialogue1')?.classList.add('show');
-						}, 400);
-						setTimeout(() => {
-							scene.querySelector('.dialogue2')?.classList.add('show');
-						}, 1600);
-						setTimeout(() => {
-							scene.querySelector('.dialogue3')?.classList.add('show');
-						}, 3200);
-						setTimeout(() => {
-							scene.querySelector('.dialogue4')?.classList.add('show');
-						}, 4800);
-						setTimeout(() => {
-							scene.querySelector('.scene1-question2')?.classList.add('show');
-						}, 5400);
-						setTimeout(() => {
-							scene.querySelector('.scene1-question1')?.classList.add('show');
-						}, 5900);
-						setTimeout(() => {
-							scene.querySelector('.scene1-question3')?.classList.add('show');
-						}, 6400);
-					} else if (i === 1) {
-						// Scene 2 animations - faster timing for better flow
-						setTimeout(() => {
-							scene.querySelector('.dialogue1-s2')?.classList.add('show');
-						}, 400);
-						setTimeout(() => {
-							scene.querySelector('.dialogue2-s2')?.classList.add('show');
-						}, 1600);
-						setTimeout(() => {
-							scene.querySelector('.dialogue3-s2')?.classList.add('show');
-						}, 3200);
-						setTimeout(() => {
-							scene.querySelector('.dialogue4-s2')?.classList.add('show');
-						}, 4800);
-						setTimeout(() => {
-							scene.querySelector('.scene2-icons')?.classList.add('show');
-						}, 5400);
-					}
+					// No auto-animations, will be triggered by clicks
 				} else {
 					scene.classList.remove('active');
 
@@ -634,6 +594,63 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			touchStartY = 0;
 			touchEndY = 0;
 		}
+
+		// Advance dialogue in current scene
+		function advanceDialogue() {
+			const scene = scenes[currentScene];
+
+			if (currentScene === 0) {
+				// Scene 1
+				const elements = [
+					() => scene.querySelector('.dialogue1')?.classList.add('show'),
+					() => scene.querySelector('.dialogue2')?.classList.add('show'),
+					() => scene.querySelector('.dialogue3')?.classList.add('show'),
+					() => scene.querySelector('.dialogue4')?.classList.add('show'),
+					() => scene.querySelector('.scene1-question2')?.classList.add('show'),
+					() => scene.querySelector('.scene1-question1')?.classList.add('show'),
+					() => scene.querySelector('.scene1-question3')?.classList.add('show'),
+				];
+
+				if (dialogueStep < elements.length) {
+					elements[dialogueStep]();
+					dialogueStep++;
+				} else if (currentScene < scenes.length - 1) {
+					// All dialogues shown, go to next scene
+					showScene(currentScene + 1);
+				}
+			} else if (currentScene === 1) {
+				// Scene 2
+				const elements = [
+					() => scene.querySelector('.dialogue1-s2')?.classList.add('show'),
+					() => scene.querySelector('.dialogue2-s2')?.classList.add('show'),
+					() => scene.querySelector('.dialogue3-s2')?.classList.add('show'),
+					() => scene.querySelector('.dialogue4-s2')?.classList.add('show'),
+					() => scene.querySelector('.scene2-icons')?.classList.add('show'),
+				];
+
+				if (dialogueStep < elements.length) {
+					elements[dialogueStep]();
+					dialogueStep++;
+				} else if (currentScene < scenes.length - 1) {
+					// All dialogues shown, go to next scene
+					showScene(currentScene + 1);
+				}
+			} else if (currentScene === 2) {
+				// Scene 3 - go to next scene directly
+				if (currentScene < scenes.length - 1) {
+					showScene(currentScene + 1);
+				}
+			}
+		}
+
+		// Click/tap to advance dialogue
+		scenesContainer?.addEventListener('click', (e) => {
+			// Don't trigger if clicking on buttons or links
+			if (e.target.closest('button') || e.target.closest('a')) {
+				return;
+			}
+			advanceDialogue();
+		});
 
 		// Initialize first scene
 		showScene(0);
