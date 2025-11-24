@@ -388,18 +388,16 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		</div>
 
 		<!-- Navigation Buttons -->
-		<div class="absolute right-4 top-1/4 -translate-y-1/2 flex flex-col gap-4 z-20">
-			<button id="up-btn" class="nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 hidden">
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-					<polyline points="18 15 12 9 6 15"></polyline>
-				</svg>
-			</button>
-			<button id="down-btn" class="nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200">
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-					<polyline points="6 9 12 15 18 9"></polyline>
-				</svg>
-			</button>
-		</div>
+		<button id="up-btn" class="absolute right-4 top-1/4 -translate-y-1/2 nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20 hidden">
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+		<button id="down-btn" class="absolute right-4 top-3/4 -translate-y-1/2 nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20">
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+				<polyline points="6 9 12 15 18 9"></polyline>
+			</svg>
+		</button>
 
 		<!-- Share Button -->
 		<button id="share-btn" class="absolute right-4 bottom-20 w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20">
@@ -628,9 +626,12 @@ const questionMark3 = `${base}/question-mark-3.png`;
 					() => scene.querySelector('.dialogue2')?.classList.add('show'),
 					() => scene.querySelector('.dialogue3')?.classList.add('show'),
 					() => scene.querySelector('.dialogue4')?.classList.add('show'),
-					() => scene.querySelector('.scene1-question2')?.classList.add('show'),
-					() => scene.querySelector('.scene1-question1')?.classList.add('show'),
-					() => scene.querySelector('.scene1-question3')?.classList.add('show'),
+					() => {
+						// Show question marks with staggered timing
+						scene.querySelector('.scene1-question2')?.classList.add('show');
+						setTimeout(() => scene.querySelector('.scene1-question1')?.classList.add('show'), 150);
+						setTimeout(() => scene.querySelector('.scene1-question3')?.classList.add('show'), 300);
+					},
 				];
 
 				if (dialogueStep < elements.length) {
