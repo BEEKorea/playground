@@ -7,9 +7,9 @@ const peep102 = `${base}/peep-102.png`;
 const peep18 = `${base}/peep-18.png`;
 const peep73 = `${base}/peep-73.png`;
 const peep2 = `${base}/peep-2.png`;
-const questionMarkPink = `${base}/question-mark-pink.svg`;
-const questionMarkCute = `${base}/question-mark-cute.svg`;
-const questionMarkBlue = `${base}/question-mark-blue.svg`;
+const questionMark1 = `${base}/question-mark-1.png`;
+const questionMark2 = `${base}/question-mark-2.png`;
+const questionMark3 = `${base}/question-mark-3.png`;
 ---
 
 <Layout title="쇼츠 - MediAccess">
@@ -156,14 +156,14 @@ const questionMarkBlue = `${base}/question-mark-blue.svg`;
 			</div>
 
 			<!-- Question Marks -->
-			<div class="scene1-question1 absolute bottom-16 left-1/2 opacity-0 w-14" style="transform: translate(calc(-50% - 25px), 0) rotate(-15deg) !important;">
-				<img src={questionMarkPink} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
+			<div class="scene1-question1 absolute bottom-16 left-1/2 opacity-0 w-12" style="transform: translate(calc(-50% - 50px), 0) rotate(-15deg) !important;">
+				<img src={questionMark3} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
-			<div class="scene1-question2 absolute bottom-16 left-1/2 opacity-0 w-14" style="transform: translate(-50%, 0) !important;">
-				<img src={questionMarkCute} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
+			<div class="scene1-question2 absolute bottom-16 left-1/2 opacity-0 w-12" style="transform: translate(-50%, 0) !important;">
+				<img src={questionMark2} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
-			<div class="scene1-question3 absolute bottom-16 left-1/2 opacity-0 w-14" style="transform: translate(calc(-50% + 25px), 0) rotate(15deg) !important;">
-				<img src={questionMarkBlue} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
+			<div class="scene1-question3 absolute bottom-16 left-1/2 opacity-0 w-12" style="transform: translate(calc(-50% + 50px), 0) rotate(-15deg) !important;">
+				<img src={questionMark1} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
 		</div>
 
@@ -385,13 +385,13 @@ const questionMarkBlue = `${base}/question-mark-blue.svg`;
 
 		<!-- Navigation Buttons -->
 		<div class="absolute right-4 top-1/4 -translate-y-1/2 flex flex-col gap-4 z-20">
-			<button id="up-btn" class="nav-btn w-12 h-12 rounded-full bg-white/25 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-200 shadow-lg hidden">
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+			<button id="up-btn" class="nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 hidden">
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
 					<polyline points="18 15 12 9 6 15"></polyline>
 				</svg>
 			</button>
-			<button id="down-btn" class="nav-btn w-12 h-12 rounded-full bg-white/25 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 hover:scale-110 transition-all duration-200 shadow-lg">
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+			<button id="down-btn" class="nav-btn w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200">
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
 					<polyline points="6 9 12 15 18 9"></polyline>
 				</svg>
 			</button>
@@ -501,13 +501,38 @@ const questionMarkBlue = `${base}/question-mark-blue.svg`;
 				} else {
 					scene.classList.remove('active');
 
-					// Reset animations
+					// Reset animations - remove show class and restore initial opacity-0
 					const dialogues = scene.querySelectorAll('[class*="dialogue"]');
-					dialogues.forEach(d => d.classList.remove('show'));
-					scene.querySelector('.scene1-question1')?.classList.remove('show');
-					scene.querySelector('.scene1-question2')?.classList.remove('show');
-					scene.querySelector('.scene1-question3')?.classList.remove('show');
-					scene.querySelector('.scene2-icons')?.classList.remove('show');
+					dialogues.forEach(d => {
+						d.classList.remove('show');
+						if (!d.classList.contains('opacity-0')) {
+							d.classList.add('opacity-0');
+						}
+					});
+
+					// Reset scene 1 question marks
+					const q1 = scene.querySelector('.scene1-question1');
+					const q2 = scene.querySelector('.scene1-question2');
+					const q3 = scene.querySelector('.scene1-question3');
+					if (q1) {
+						q1.classList.remove('show');
+						if (!q1.classList.contains('opacity-0')) q1.classList.add('opacity-0');
+					}
+					if (q2) {
+						q2.classList.remove('show');
+						if (!q2.classList.contains('opacity-0')) q2.classList.add('opacity-0');
+					}
+					if (q3) {
+						q3.classList.remove('show');
+						if (!q3.classList.contains('opacity-0')) q3.classList.add('opacity-0');
+					}
+
+					// Reset scene 2 icons
+					const icons = scene.querySelector('.scene2-icons');
+					if (icons) {
+						icons.classList.remove('show');
+						if (!icons.classList.contains('opacity-0')) icons.classList.add('opacity-0');
+					}
 				}
 			});
 			currentScene = index;
