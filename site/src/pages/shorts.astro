@@ -401,6 +401,15 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			</button>
 		</div>
 
+		<!-- Share Button -->
+		<button id="share-btn" class="absolute right-4 bottom-20 w-12 h-12 flex items-center justify-center hover:scale-125 transition-all duration-200 z-20">
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+				<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+				<polyline points="16 6 12 2 8 6"></polyline>
+				<line x1="12" y1="2" x2="12" y2="15"></line>
+			</svg>
+		</button>
+
 		<!-- Scene Indicator -->
 		<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
 			<div class="scene-indicator h-1 rounded-full w-8 bg-white transition-all"></div>
@@ -628,6 +637,31 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 		// Initialize first scene
 		showScene(0);
+
+		// Share button
+		const shareBtn = document.getElementById('share-btn');
+		shareBtn?.addEventListener('click', async () => {
+			const shareData = {
+				title: '흔들리는 갈라디아교회, 흔들리는 당신은? | BEE 겨울방학 특강',
+				text: '갈라디아서 단과반에서 함께 고민하고 답을 찾아보세요!',
+				url: window.location.href
+			};
+
+			try {
+				if (navigator.share) {
+					await navigator.share(shareData);
+				} else {
+					// Fallback: copy to clipboard
+					await navigator.clipboard.writeText(window.location.href);
+					alert('링크가 클립보드에 복사되었습니다!');
+				}
+			} catch (err) {
+				// User cancelled or error occurred
+				if (err.name !== 'AbortError') {
+					console.error('Share failed:', err);
+				}
+			}
+		});
 	</script>
 </Layout>
 
@@ -832,5 +866,22 @@ const questionMark3 = `${base}/question-mark-3.png`;
 	@keyframes underline-blink-animation {
 		0%, 100% { border-bottom-color: currentColor; }
 		50% { border-bottom-color: transparent; }
+	}
+
+	/* Image loading skeleton */
+	img {
+		background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+		background-size: 200% 100%;
+		animation: loading 1.5s ease-in-out infinite;
+	}
+
+	img[src] {
+		background: none;
+		animation: none;
+	}
+
+	@keyframes loading {
+		0% { background-position: 200% 0; }
+		100% { background-position: -200% 0; }
 	}
 </style>
