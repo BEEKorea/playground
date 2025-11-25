@@ -10,13 +10,38 @@ const peep2 = `${base}/peep-2.png`;
 const questionMark1 = `${base}/question-mark-1.png`;
 const questionMark2 = `${base}/question-mark-2.png`;
 const questionMark3 = `${base}/question-mark-3.png`;
+const scene1A1 = `${base}/scene1-a1.png`;
+const scene1B1 = `${base}/scene1-b1.png`;
+const scene1A2 = `${base}/scene1-a2.png`;
+const scene1B2 = `${base}/scene1-b2.png`;
+const scene2A1 = `${base}/scene2-a1.png`;
+const scene2B1 = `${base}/scene2-b1.png`;
+const scene2A2 = `${base}/scene2-a2.png`;
+const scene2B2 = `${base}/scene2-b2.png`;
+const scene2Bottom = `${base}/scene2-bottom.png`;
 ---
 
 <Layout
 	title="흔들리는 갈라디아교회, 흔들리는 당신은? | BEE 겨울방학 특강"
 	description="갈라디아서 단과반에서 함께 고민하고 답을 찾아보세요!"
-	image="/shorts-preview-heart.jpg"
+	image="/shorts-preview-heart.png"
 >
+	<!-- Loading Screen -->
+	<div id="loading-screen" class="fixed inset-0 flex items-center justify-center transition-opacity duration-700" style="z-index: 9999;">
+		<div class="flex flex-col items-center justify-center">
+			<!-- Animated crayon drawing effect -->
+			<svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 1.5rem; display: block; margin-left: auto; margin-right: auto;">
+				<circle cx="60" cy="60" r="50" fill="none" stroke="#FFB6C1" stroke-width="4" stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round" style="animation: draw 2s ease-out forwards;">
+					<animate attributeName="stroke-dashoffset" from="314" to="0" dur="2s" fill="freeze" />
+				</circle>
+				<circle cx="60" cy="60" r="35" fill="none" stroke="#FFC9D6" stroke-width="3" stroke-dasharray="220" stroke-dashoffset="220" stroke-linecap="round" style="animation-delay: 0.5s;">
+					<animate attributeName="stroke-dashoffset" from="220" to="0" dur="1.5s" begin="0.5s" fill="freeze" />
+				</circle>
+			</svg>
+			<p class="text-base md:text-xl" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #FFB6C1; animation: fadeIn 1s ease-out; text-align: center; width: 100%;">잠시만 기다려주세요...</p>
+		</div>
+	</div>
+
 	<!-- SVG Avatar Definitions -->
 	<svg style="display: none;">
 		<defs>
@@ -128,7 +153,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			<div class="space-y-4 w-full max-w-sm">
 				<!-- Dialogue 1 -->
 				<div class="dialogue1 flex items-start gap-2 opacity-0">
-					<img src={peep102} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene1A1} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">그 사람이 말한 걸 그대로 믿는다고?</p>
 					</div>
@@ -136,7 +161,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 				<!-- Dialogue 2 -->
 				<div class="dialogue2 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src={peep100} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene1B1} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">바울 선생님이 우리는 믿음으로<br>구원받는다고 했어</p>
 					</div>
@@ -144,7 +169,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 				<!-- Dialogue 3 -->
 				<div class="dialogue3 flex items-start gap-2 opacity-0">
-					<img src={peep102} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene1A2} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">여기 봐봐. 율법을 지켜야 한다니까?</p>
 					</div>
@@ -152,22 +177,16 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 				<!-- Dialogue 4 -->
 				<div class="dialogue4 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src={peep100} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene1B2} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">뭐가 맞는걸까?</p>
 					</div>
 				</div>
 			</div>
 
-			<!-- Question Marks -->
-			<div class="scene1-question1 absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(calc(-50% - 45px), 0) rotate(-15deg) !important;">
-				<img src={questionMark3} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
-			</div>
-			<div class="scene1-question2 absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(-50%, 0) !important;">
+			<!-- Question Mark -->
+			<div class="scene1-question absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(-50%, 0) rotate(-10deg) !important;">
 				<img src={questionMark2} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
-			</div>
-			<div class="scene1-question3 absolute bottom-16 left-1/2 opacity-0 w-10" style="transform: translate(calc(-50% + 45px), 0) rotate(-15deg) !important;">
-				<img src={questionMark1} alt="물음표" class="w-full" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));" />
 			</div>
 		</div>
 
@@ -188,7 +207,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 			<div class="space-y-4 w-full max-w-sm">
 				<!-- Dialogue 1 -->
 				<div class="dialogue1-s2 flex items-start gap-2 opacity-0">
-					<img src={peep18} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene2A1} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">드디어 교회 등록했구나!</p>
 					</div>
@@ -196,7 +215,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 				<!-- Dialogue 2 -->
 				<div class="dialogue2-s2 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src={peep73} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene2B1} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">응! 이제 완벽한 크리스천😊</p>
 					</div>
@@ -204,7 +223,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 				<!-- Dialogue 3 -->
 				<div class="dialogue3-s2 flex items-start gap-2 opacity-0">
-					<img src={peep18} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene2A2} alt="A" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="bg-white/95 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[260px] shadow-md">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">에이~ 헌금, 팀모임, 봉사는?</p>
 					</div>
@@ -212,7 +231,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 				<!-- Dialogue 4 -->
 				<div class="dialogue4-s2 flex items-start gap-2 flex-row-reverse opacity-0">
-					<img src={peep73} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
+					<img src={scene2B2} alt="B" class="w-10 h-10 flex-shrink-0 rounded-full object-cover" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));" />
 					<div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[260px] shadow-md" style="background-color: #9FE7E7;">
 						<p class="text-slate-700 leading-relaxed" style="font-family: 'Ongeullip Cocoa'; font-weight: 400;">헐... 믿음만으로는 안 돼...?</p>
 					</div>
@@ -221,7 +240,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 			<!-- Character Icon -->
 			<div class="scene2-icons absolute bottom-16 opacity-0">
-				<img src={peep2} alt="캐릭터" class="w-16 md:w-20" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));" />
+				<img src={scene2Bottom} alt="캐릭터" class="w-16 md:w-20" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));" />
 			</div>
 		</div>
 
@@ -407,6 +426,22 @@ const questionMark3 = `${base}/question-mark-3.png`;
 	</div>
 
 	<script>
+		// Loading screen animation
+		const loadingScreen = document.getElementById('loading-screen');
+		const scenesContainer = document.getElementById('scenes-container');
+
+		// Hide loading screen and show content after animation
+		window.addEventListener('load', () => {
+			setTimeout(() => {
+				if (loadingScreen) {
+					loadingScreen.style.opacity = '0';
+					setTimeout(() => {
+						loadingScreen.style.display = 'none';
+					}, 700);
+				}
+			}, 1500); // Show loading for 1.5 seconds
+		});
+
 		let currentScene = 0;
 		let isAnimating = false;
 		let isDialoguePlaying = false; // New flag to track dialogue playback
@@ -480,21 +515,11 @@ const questionMark3 = `${base}/question-mark-3.png`;
 						}
 					});
 
-					// Reset scene 1 question marks
-					const q1 = scene.querySelector('.scene1-question1');
-					const q2 = scene.querySelector('.scene1-question2');
-					const q3 = scene.querySelector('.scene1-question3');
-					if (q1) {
-						q1.classList.remove('show');
-						if (!q1.classList.contains('opacity-0')) q1.classList.add('opacity-0');
-					}
-					if (q2) {
-						q2.classList.remove('show');
-						if (!q2.classList.contains('opacity-0')) q2.classList.add('opacity-0');
-					}
-					if (q3) {
-						q3.classList.remove('show');
-						if (!q3.classList.contains('opacity-0')) q3.classList.add('opacity-0');
+					// Reset scene 1 question mark
+					const q = scene.querySelector('.scene1-question');
+					if (q) {
+						q.classList.remove('show');
+						if (!q.classList.contains('opacity-0')) q.classList.add('opacity-0');
 					}
 
 					// Reset scene 2 icons
@@ -530,7 +555,6 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		let touchStartY = 0;
 		let touchEndY = 0;
 		let isDragging = false;
-		const scenesContainer = document.getElementById('scenes-container');
 
 		// Touch events
 		scenesContainer?.addEventListener('touchstart', (e) => {
@@ -604,12 +628,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 					() => scene.querySelector('.dialogue2')?.classList.add('show'),
 					() => scene.querySelector('.dialogue3')?.classList.add('show'),
 					() => scene.querySelector('.dialogue4')?.classList.add('show'),
-					() => {
-						// Show question marks with staggered timing
-						scene.querySelector('.scene1-question2')?.classList.add('show');
-						setTimeout(() => scene.querySelector('.scene1-question1')?.classList.add('show'), 150);
-						setTimeout(() => scene.querySelector('.scene1-question3')?.classList.add('show'), 300);
-					},
+					() => scene.querySelector('.scene1-question')?.classList.add('show'),
 				];
 
 				if (dialogueStep < elements.length) {
@@ -715,6 +734,11 @@ const questionMark3 = `${base}/question-mark-3.png`;
 </Layout>
 
 <style>
+	/* Loading screen background */
+	#loading-screen {
+		background: linear-gradient(to bottom right, #e0f2fe, #f3e8ff, #fef3c7);
+	}
+
 	/* Scene transitions */
 	.scene {
 		position: absolute;
@@ -762,7 +786,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		transform: translateX(0) !important;
 	}
 
-	.scene1-question1.show, .scene1-question2.show, .scene1-question3.show {
+	.scene1-question.show {
 		opacity: 1 !important;
 	}
 
@@ -783,7 +807,7 @@ const questionMark3 = `${base}/question-mark-3.png`;
 
 	/* Scene 2 sheep shaking animation */
 	.scene2-sheep {
-		animation: shake 0.8s ease-in-out infinite;
+		animation: shake-strong 0.6s ease-in-out infinite;
 		animation-play-state: paused;
 	}
 
@@ -806,6 +830,24 @@ const questionMark3 = `${base}/question-mark-3.png`;
 		25% { transform: rotate(2deg) scale(1.02); }
 		50% { transform: rotate(-2deg) scale(1); }
 		75% { transform: rotate(2deg) scale(1.02); }
+	}
+
+	@keyframes shake-strong {
+		0%, 100% { transform: rotate(-4deg) scale(1); }
+		25% { transform: rotate(4deg) scale(1.03); }
+		50% { transform: rotate(-4deg) scale(1); }
+		75% { transform: rotate(4deg) scale(1.03); }
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	@keyframes fadeInScale {
