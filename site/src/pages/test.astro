@@ -244,6 +244,12 @@ import Layout from '../layouts/Layout.astro';
 				filter: url(#crayon-texture);
 				z-index: -1;
 			}
+
+			/* YES/NO 버튼 컨테이너 정렬 강제 (모바일 전용) */
+			.absolute.left-1\/2.transform.-translate-x-1\/2 {
+				left: 50% !important;
+				transform: translateX(-50%) !important;
+			}
 		}
 
 		@keyframes fadeIn {
