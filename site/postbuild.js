@@ -27,7 +27,9 @@ const images = [
   'scene2-a2.png',
   'scene2-b1.png',
   'scene2-b2.png',
-  'scene2-bottom.png'
+  'scene2-bottom.png',
+  'romans-char.png',
+  'galatians-char.png'
 ];
 
 images.forEach(img => {

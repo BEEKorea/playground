@@ -477,6 +477,7 @@ import Layout from '../layouts/Layout.astro';
 			11: {
 				book: "로마서",
 				time: "B102, 1/8-2/26",
+				image: "/playground/romans-char.png",
 				isResult: true,
 				x: 1100,
 				y: 450
@@ -484,6 +485,7 @@ import Layout from '../layouts/Layout.astro';
 			13: {
 				book: "갈라디아서",
 				time: "① 일 오후 12/28-2/22\n② 월 오전 12/29-2/23",
+				image: "/playground/galatians-char.png",
 				isResult: true,
 				x: 1100,
 				y: 250
@@ -754,6 +756,12 @@ import Layout from '../layouts/Layout.astro';
 						<!-- Text layer on top without filter -->
 						<div class="absolute inset-0 flex flex-col justify-between" style="padding: ${isMobile ? '0.75rem' : '1rem'};">
 							<div class="flex-1 flex flex-col items-center justify-center">
+								${data.image ? `
+								<div class="mb-2">
+									<img src="${data.image}" alt="${data.book}"
+										style="width: ${isMobile ? '3rem' : '3.5rem'}; height: ${isMobile ? '3rem' : '3.5rem'}; border-radius: 50%; object-fit: cover; border: 2px solid #6B5B4F;">
+								</div>
+								` : ''}
 								<div class="text-center mb-1">
 									<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer" class="font-bold" style="font-family: 'Ongeullip Cocoa'; color: #6B5B4F; font-size: ${isMobile ? '0.95rem' : '1.1rem'}; cursor: pointer; text-decoration: none;">${data.book}</a>
 								</div>
