@@ -241,7 +241,7 @@ import Layout from '../layouts/Layout.astro';
 				position: absolute;
 				inset: 0;
 				background: #FBF5E8;
-				filter: url(#crayon-bg);
+				filter: url(#crayon-texture);
 				z-index: -1;
 			}
 		}
@@ -781,13 +781,13 @@ import Layout from '../layouts/Layout.astro';
 							<div class="flex gap-2 justify-center" style="margin-top: 0.5rem; align-items: stretch;">
 								<a href="https://www.beekorea.org/lms/accounts/signup/" target="_blank" rel="noopener noreferrer"
 									class="relative rounded-lg font-bold hover:scale-105 transition-all duration-200"
-									style="font-family: 'Ongeullip Cocoa'; padding: ${isMobile ? '0.5rem 0.5rem' : '0.5rem 0.75rem'}; font-size: ${isMobile ? '0.7rem' : '0.75rem'}; display: flex; align-items: center; justify-content: center; min-height: ${isMobile ? '2rem' : 'auto'}; width: calc(50% - 0.25rem);">
+									style="font-family: 'Ongeullip Cocoa'; padding: ${isMobile ? '0.5rem 0.5rem' : '0.5rem 0.75rem'}; font-size: ${isMobile ? '0.7rem' : '0.75rem'}; display: flex; align-items: center; justify-content: center; min-height: ${isMobile ? '2rem' : 'auto'}; width: calc(50% - 0.25rem); min-width: 70px;">
 									<span class="absolute inset-0 rounded-lg" style="background: linear-gradient(135deg, #6FA8DC 0%, #5B9BD5 100%); filter: url(#crayon-texture);"></span>
 									<span class="relative text-white text-center" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">회원가입</span>
 								</a>
 								<a href="https://www.beekorea.org/lms/seminar/" target="_blank" rel="noopener noreferrer"
 									class="relative rounded-lg font-bold hover:scale-105 transition-all duration-200"
-									style="font-family: 'Ongeullip Cocoa'; padding: ${isMobile ? '0.5rem 0.5rem' : '0.5rem 0.75rem'}; font-size: ${isMobile ? '0.7rem' : '0.75rem'}; display: flex; align-items: center; justify-content: center; min-height: ${isMobile ? '2rem' : 'auto'}; width: calc(50% - 0.25rem);">
+									style="font-family: 'Ongeullip Cocoa'; padding: ${isMobile ? '0.5rem 0.5rem' : '0.5rem 0.75rem'}; font-size: ${isMobile ? '0.7rem' : '0.75rem'}; display: flex; align-items: center; justify-content: center; min-height: ${isMobile ? '2rem' : 'auto'}; width: calc(50% - 0.25rem); min-width: 70px;">
 									<span class="absolute inset-0 rounded-lg" style="background: linear-gradient(135deg, #FF6B9D 0%, #E85A8B 100%); filter: url(#crayon-texture);"></span>
 									<span class="relative text-white text-center" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">수강신청</span>
 								</a>
@@ -817,7 +817,7 @@ import Layout from '../layouts/Layout.astro';
 						<div class="rounded-full flex items-center justify-center relative" style="width: ${nodeSize}; height: ${nodeSize}; padding: ${isMobile ? '0.75rem' : '1rem'};">
 							<h3 class="text-center whitespace-pre-line leading-tight" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #5D4E37; font-size: ${textSize};">${displayText}</h3>
 						</div>
-						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: ${isMobile ? '-3.5rem' : '-4rem'}; z-index: 100; align-items: center; justify-content: center; display: flex;">
+						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: -4rem; z-index: 100; align-items: center; justify-content: center; display: flex;">
 							<button
 								class="yes-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
 								style="position: relative; pointer-events: auto; cursor: pointer; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; padding: 0; display: flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0;"
