@@ -806,8 +806,8 @@ import Layout from '../layouts/Layout.astro';
 				const isMobile = window.innerWidth < 768;
 				const nodeSize = isMobile ? '9rem' : '10rem'; // 144px vs 160px
 				const textSize = isMobile ? '0.8rem' : '0.875rem';
-				const buttonWidth = isMobile ? '70px' : '80px'; // 더 여유있는 너비
-				const buttonHeight = isMobile ? '38px' : '42px'; // 더 여유있는 높이
+				const buttonWidth = '80px'; // PC 크기로 통일
+				const buttonHeight = '42px'; // PC 크기로 통일
 				const buttonFontSize = isMobile ? '0.85rem' : '0.9rem'; // 폰트 크기 통일
 
 				const showBackButton = selectedPath.length > 1; // Show back button if not first node
