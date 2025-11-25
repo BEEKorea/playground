@@ -29,7 +29,12 @@ const images = [
   'scene2-b2.png',
   'scene2-bottom.png',
   'romans-char.png',
-  'galatians-char.png'
+  'galatians-char.png',
+  'bible-char.png',
+  'god-char.png',
+  'hebrews-char.png',
+  'john-char.png',
+  'corinthians-char.png'
 ];
 
 images.forEach(img => {
