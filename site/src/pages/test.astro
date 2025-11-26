@@ -35,7 +35,7 @@ import Layout from '../layouts/Layout.astro';
 			</svg>
 
 			<!-- Striped circle (top center) -->
-			<svg style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; animation: slowRotate 28s linear infinite reverse;">
+			<svg class="hidden md:block" style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; animation: slowRotate 28s linear infinite reverse;">
 				<circle cx="25" cy="25" r="20" fill="none" stroke="#FFD700" stroke-width="2.5" style="filter: url(#crayon-texture);"/>
 				<line x1="11" y1="13" x2="18" y2="20" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" style="filter: url(#crayon-texture);"/>
 				<line x1="15" y1="11" x2="22" y2="18" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" style="filter: url(#crayon-texture);"/>
@@ -52,21 +52,21 @@ import Layout from '../layouts/Layout.astro';
 			</svg>
 
 			<!-- Droplets/teardrops -->
-			<svg style="position: absolute; top: 20%; right: 20%; width: 20px; height: 25px; animation: floatSlow2 6s ease-in-out infinite;">
+			<svg class="hidden md:block" style="position: absolute; top: 20%; right: 20%; width: 20px; height: 25px; animation: floatSlow2 6s ease-in-out infinite;">
 				<path d="M10,5 Q15,12 15,18 Q15,22 10,22 Q5,22 5,18 Q5,12 10,5 Z" fill="#6FA8DC" stroke="#6FA8DC" stroke-width="1.5" style="filter: url(#crayon-texture);"/>
 			</svg>
-			<svg style="position: absolute; top: 45%; left: 18%; width: 18px; height: 23px; animation: floatGentle 7s ease-in-out infinite;">
+			<svg class="hidden md:block" style="position: absolute; top: 45%; left: 18%; width: 18px; height: 23px; animation: floatGentle 7s ease-in-out infinite;">
 				<path d="M9,5 Q13,11 13,16 Q13,20 9,20 Q5,20 5,16 Q5,11 9,5 Z" fill="#6FA8DC" stroke="#6FA8DC" stroke-width="1.5" style="filter: url(#crayon-texture);"/>
 			</svg>
 
 			<!-- Hearts (scattered) -->
-			<svg style="position: absolute; top: 15%; right: 10%; width: 35px; height: 35px; animation: floatSlow1 7s ease-in-out infinite;">
+			<svg class="hidden md:block" style="position: absolute; top: 15%; right: 10%; width: 35px; height: 35px; animation: floatSlow1 7s ease-in-out infinite;">
 				<path d="M17,30 Q10,22 6,14 Q2,6 10,6 Q14,6 17,10 Q20,6 24,6 Q32,6 28,14 Q24,22 17,30 Z" fill="none" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: url(#crayon-texture);"/>
 			</svg>
 			<svg class="hidden md:block" style="position: absolute; top: 55%; left: 6%; width: 32px; height: 32px; animation: floatSlow2 9s ease-in-out infinite;">
 				<path d="M16,28 Q9,20 6,13 Q2,5 9,5 Q13,5 16,9 Q19,5 23,5 Q30,5 26,13 Q23,20 16,28 Z" fill="none" stroke="#6FA8DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: url(#crayon-texture);"/>
 			</svg>
-			<svg style="position: absolute; bottom: 28%; right: 12%; width: 28px; height: 28px; animation: floatGentle 8s ease-in-out infinite;">
+			<svg class="hidden md:block" style="position: absolute; bottom: 28%; right: 12%; width: 28px; height: 28px; animation: floatGentle 8s ease-in-out infinite;">
 				<path d="M14,24 Q8,17 5,11 Q2,4 8,4 Q11,4 14,7 Q17,4 20,4 Q26,4 23,11 Q20,17 14,24 Z" fill="none" stroke="#FF6B9D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: url(#crayon-texture);"/>
 			</svg>
 			<svg class="hidden md:block" style="position: absolute; top: 18%; left: 15%; width: 30px; height: 30px; animation: floatGentle 9s ease-in-out infinite;">
@@ -74,7 +74,7 @@ import Layout from '../layouts/Layout.astro';
 			</svg>
 
 			<!-- Triangles -->
-			<svg style="position: absolute; bottom: 35%; left: 10%; width: 32px; height: 32px; animation: floatGentle 10s ease-in-out infinite;">
+			<svg class="hidden md:block" style="position: absolute; bottom: 35%; left: 10%; width: 32px; height: 32px; animation: floatGentle 10s ease-in-out infinite;">
 				<path d="M16,5 L30,27 L2,27 Z" fill="none" stroke="#FF6B9D" stroke-width="2.5" stroke-linejoin="round" style="filter: url(#crayon-texture);"/>
 			</svg>
 			<svg class="hidden md:block" style="position: absolute; top: 12%; right: 18%; width: 28px; height: 28px; animation: floatSlow2 11s ease-in-out infinite;">
@@ -101,7 +101,7 @@ import Layout from '../layouts/Layout.astro';
 			</svg>
 
 			<!-- Squares -->
-			<svg style="position: absolute; bottom: 18%; right: 25%; width: 27px; height: 27px; animation: floatSlow1 7s ease-in-out infinite;">
+			<svg class="hidden md:block" style="position: absolute; bottom: 18%; right: 25%; width: 27px; height: 27px; animation: floatSlow1 7s ease-in-out infinite;">
 				<rect x="3" y="3" width="21" height="21" fill="none" stroke="#FFD700" stroke-width="2.5" transform="rotate(20 13.5 13.5)" style="filter: url(#crayon-texture);"/>
 			</svg>
 			<svg class="hidden md:block" style="position: absolute; top: 32%; left: 8%; width: 24px; height: 24px; animation: slowRotate 20s linear infinite;">
