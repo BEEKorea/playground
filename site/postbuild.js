@@ -51,7 +51,9 @@ const images = [
   'god-love.jpg',
   'god-love.webp',
   'anchor.png',
-  'anchor.webp'
+  'anchor.webp',
+  'crown.png',
+  'crown.webp'
 ];
 
 images.forEach(img => {
