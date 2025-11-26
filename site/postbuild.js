@@ -53,7 +53,9 @@ const images = [
   'anchor.png',
   'anchor.webp',
   'crown.png',
-  'crown.webp'
+  'crown.webp',
+  'heart.png',
+  'heart.webp'
 ];
 
 images.forEach(img => {
