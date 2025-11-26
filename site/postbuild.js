@@ -19,6 +19,7 @@ const images = [
   'shorts-preview.png',
   'test-preview.png',
   'shorts-preview-heart.png',
+  'team-photo.png',
   'scene1-a1.png',
   'scene1-a2.png',
   'scene1-b1.png',
