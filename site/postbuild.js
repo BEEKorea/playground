@@ -39,7 +39,13 @@ const images = [
   'god-char.png',
   'hebrews-char.png',
   'john-char.png',
-  'corinthians-char.png'
+  'corinthians-char.png',
+  'holy-bible.png',
+  'holy-bible.webp',
+  'wedding-chapel.png',
+  'wedding-chapel.webp',
+  'jesus.png',
+  'jesus.webp'
 ];
 
 images.forEach(img => {
