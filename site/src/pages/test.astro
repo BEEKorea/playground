@@ -463,6 +463,7 @@ import Layout from '../layouts/Layout.astro';
 				book: "고린도전서",
 				time: "1/4-3/1",
 				image: "/playground/wedding-chapel.webp",
+				imagePng: "/playground/wedding-chapel.png",
 				isResult: true,
 				x: 1100,
 				y: 100
@@ -801,8 +802,11 @@ import Layout from '../layouts/Layout.astro';
 							<div class="flex-1 flex flex-col items-center justify-center">
 								${data.image ? `
 								<div class="mb-2">
-									<img src="${data.image}" alt="${data.book}"
-										style="width: ${isMobile ? '3rem' : '3.5rem'}; height: ${isMobile ? '3rem' : '3.5rem'}; border-radius: 50%; object-fit: cover; border: 2px solid #D4C5B9;">
+									<picture>
+										<source type="image/webp" srcset="${data.image}">
+										<img src="${data.image.replace('.webp', '.png')}" alt="${data.book}" loading="lazy"
+											style="width: ${isMobile ? '3rem' : '3.5rem'}; height: ${isMobile ? '3rem' : '3.5rem'}; border-radius: 50%; object-fit: cover; border: 2px solid #D4C5B9;">
+									</picture>
 								</div>
 								` : ''}
 								<div class="text-center mb-1">
@@ -835,9 +839,9 @@ import Layout from '../layouts/Layout.astro';
 				const isMobile = window.innerWidth < 768;
 				const nodeSize = isMobile ? '9rem' : '10rem'; // 144px vs 160px
 				const textSize = isMobile ? '0.8rem' : '0.875rem';
-				const buttonWidth = isMobile ? '70px' : '80px'; // Smaller on mobile
-				const buttonHeight = isMobile ? '38px' : '42px'; // Smaller on mobile
-				const buttonFontSize = isMobile ? '0.8rem' : '0.9rem'; // Smaller font on mobile
+				const buttonWidth = isMobile ? '75px' : '80px'; // Improved touch target
+				const buttonHeight = isMobile ? '44px' : '46px'; // Minimum 44px for mobile
+				const buttonFontSize = isMobile ? '0.85rem' : '0.9rem'; // Slightly larger font
 
 				const showBackButton = selectedPath.length > 1; // Show back button if not first node
 				const yesLabel = data.yesLabel || 'YES';
@@ -873,10 +877,10 @@ import Layout from '../layouts/Layout.astro';
 							</button>
 						</div>
 						${showBackButton ? `
-						<div class="back-button-container absolute left-1/2 transform -translate-x-1/2" style="bottom: ${isMobile ? '-7rem' : '-9rem'}; z-index: 100;">
+						<div class="back-button-container absolute left-1/2 transform -translate-x-1/2" style="bottom: ${isMobile ? '-7.5rem' : '-9rem'}; z-index: 100;">
 							<button
 								class="back-btn rounded-full hover:scale-110 shadow-md"
-								style="background: #D0D0D0; font-family: 'Ongeullip Cocoa'; font-weight: 900; color: white; pointer-events: auto; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; width: ${isMobile ? '36px' : '40px'}; height: ${isMobile ? '36px' : '40px'}; font-size: ${isMobile ? '1.2rem' : '1.4rem'}; transition: all 0.2s ease; line-height: 0; filter: url(#crayon-texture);"
+								style="background: #D0D0D0; font-family: 'Ongeullip Cocoa'; font-weight: 900; color: white; pointer-events: auto; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; width: ${isMobile ? '44px' : '48px'}; height: ${isMobile ? '44px' : '48px'}; font-size: ${isMobile ? '1.3rem' : '1.5rem'}; transition: all 0.2s ease; line-height: 0; filter: url(#crayon-texture); -webkit-tap-highlight-color: transparent;"
 								data-node="${id}"
 							>
 								<span style="pointer-events: none; display: block; margin-top: 3px;">←</span>
