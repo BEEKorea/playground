@@ -246,9 +246,33 @@ import Layout from '../layouts/Layout.astro';
 			}
 
 			/* YES/NO 버튼 컨테이너 정렬 강제 (모바일 전용) */
-			.absolute.left-1\/2.transform.-translate-x-1\/2 {
+			.button-container {
 				left: 50% !important;
 				transform: translateX(-50%) !important;
+				width: auto !important;
+				display: flex !important;
+				justify-content: center !important;
+				align-items: center !important;
+				gap: 0.5rem !important;
+			}
+
+			/* 버튼 크기 일관성 보장 */
+			.yes-btn, .no-btn {
+				min-width: 80px !important;
+				height: 42px !important;
+				display: flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+			}
+
+			/* 뒤로가기 버튼 위치 조정 */
+			.back-button-container {
+				left: 50% !important;
+				transform: translateX(-50%) !important;
+			}
+
+			.back-btn {
+				position: relative !important;
 			}
 		}
 
@@ -555,13 +579,18 @@ import Layout from '../layouts/Layout.astro';
 
 			// Calculate scale (zoom level) - smaller on mobile
 			const isMobile = containerWidth < 768;
-			const scale = isMobile ? 1.2 : 1.5;
+			const scale = isMobile ? 1.0 : 1.5; // Reduced mobile scale for better fit
 
 			// For first node on desktop, position slightly to the left
+			// For mobile, always center
 			let targetX, targetY;
 			if (nodeId === 1 && !isMobile) {
 				targetX = containerWidth * 0.35; // 35% from left on desktop
 				targetY = containerHeight / 2;
+			} else if (isMobile) {
+				// On mobile, center everything properly
+				targetX = containerWidth / 2;
+				targetY = containerHeight * 0.4; // Slightly higher for mobile
 			} else {
 				targetX = containerWidth / 2;
 				targetY = containerHeight / 2;
@@ -806,9 +835,9 @@ import Layout from '../layouts/Layout.astro';
 				const isMobile = window.innerWidth < 768;
 				const nodeSize = isMobile ? '9rem' : '10rem'; // 144px vs 160px
 				const textSize = isMobile ? '0.8rem' : '0.875rem';
-				const buttonWidth = '80px'; // PC 크기로 통일
-				const buttonHeight = '42px'; // PC 크기로 통일
-				const buttonFontSize = isMobile ? '0.85rem' : '0.9rem'; // 폰트 크기 통일
+				const buttonWidth = isMobile ? '70px' : '80px'; // Smaller on mobile
+				const buttonHeight = isMobile ? '38px' : '42px'; // Smaller on mobile
+				const buttonFontSize = isMobile ? '0.8rem' : '0.9rem'; // Smaller font on mobile
 
 				const showBackButton = selectedPath.length > 1; // Show back button if not first node
 				const yesLabel = data.yesLabel || 'YES';
@@ -823,7 +852,7 @@ import Layout from '../layouts/Layout.astro';
 						<div class="rounded-full flex items-center justify-center relative" style="width: ${nodeSize}; height: ${nodeSize}; padding: ${isMobile ? '0.75rem' : '1rem'};">
 							<h3 class="text-center whitespace-pre-line leading-tight" style="font-family: 'Ongeullip Cocoa'; font-weight: 700; color: #5D4E37; font-size: ${textSize};">${displayText}</h3>
 						</div>
-						<div class="absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: -4rem; z-index: 100; align-items: center; justify-content: center; display: flex;">
+						<div class="button-container absolute left-1/2 transform -translate-x-1/2 flex gap-2" style="bottom: -4rem; z-index: 100; align-items: center; justify-content: center; display: flex;">
 							<button
 								class="yes-btn rounded-lg font-bold hover:scale-105 transition-all duration-200 shadow-md"
 								style="position: relative; pointer-events: auto; cursor: pointer; z-index: 100; width: ${buttonWidth}; height: ${buttonHeight}; padding: 0; display: flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0;"
@@ -844,7 +873,7 @@ import Layout from '../layouts/Layout.astro';
 							</button>
 						</div>
 						${showBackButton ? `
-						<div class="absolute left-1/2 transform -translate-x-1/2" style="bottom: ${isMobile ? '-8rem' : '-9rem'}; z-index: 100;">
+						<div class="back-button-container absolute left-1/2 transform -translate-x-1/2" style="bottom: ${isMobile ? '-7rem' : '-9rem'}; z-index: 100;">
 							<button
 								class="back-btn rounded-full hover:scale-110 shadow-md"
 								style="background: #D0D0D0; font-family: 'Ongeullip Cocoa'; font-weight: 900; color: white; pointer-events: auto; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; width: ${isMobile ? '36px' : '40px'}; height: ${isMobile ? '36px' : '40px'}; font-size: ${isMobile ? '1.2rem' : '1.4rem'}; transition: all 0.2s ease; line-height: 0; filter: url(#crayon-texture);"
@@ -866,12 +895,13 @@ import Layout from '../layouts/Layout.astro';
 				const containerWidth = window.innerWidth;
 				const containerHeight = window.innerHeight;
 				const isMobile = containerWidth < 768;
-				const scale = isMobile ? 1.2 : 1.5;
-				// Responsive positioning: 45% on mobile, 65% on desktop
-				const targetPercentage = isMobile ? 0.45 : 0.65;
+				const scale = isMobile ? 0.9 : 1.5; // Reduced scale for mobile
+				// Responsive positioning: center on mobile, right on desktop
+				const targetPercentage = isMobile ? 0.5 : 0.65;
 				const targetX = containerWidth * targetPercentage;
+				const targetY = isMobile ? containerHeight * 0.4 : containerHeight / 2;
 				const translateX = targetX - (data.x * scale);
-				const translateY = (containerHeight / 2) - (data.y * scale);
+				const translateY = targetY - (data.y * scale);
 
 				if (flowchart) {
 					flowchart.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
